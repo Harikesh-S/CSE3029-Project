@@ -8,13 +8,17 @@ var animationPlayer : AnimationPlayer
 var health : int
 var area2D : Area2D
 
+var damageTaken
+
 func Start():
 	animationPlayer.play("Idle")
 	animationPlayer.connect("animation_finished",self,"AnimationFinished")
 	area2D.connect("area_entered",self,"AreaEntered")
 
 func AreaEntered(area : Area2D):
-	OnHit(area.get_parent().GetDamage())
+	damageTaken = area.get_parent().GetDamage()
+	if(damageTaken):	# Only apply damage taken if the object returned damage
+		OnHit(damageTaken)
 
 func AnimationFinished(animationName : String):
 	if(animationName=="Hit"):

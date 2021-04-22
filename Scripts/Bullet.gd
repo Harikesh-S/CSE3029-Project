@@ -2,6 +2,8 @@
 class_name Bullet
 extends KinematicBody2D
 
+signal hit_enemy(amount)
+
 var velocity
 
 func destroy() -> void:

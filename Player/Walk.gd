@@ -14,7 +14,8 @@ func Update(delta: float) -> void:
 	if Input.is_action_pressed("shoot"):
 		owner.ShootWeapon()
 	if Input.is_action_just_pressed("dash"):
-		stateMachine.TransitionTo("Dash")
+		if(owner.CanDash()):
+			stateMachine.TransitionTo("Dash")
 	owner.velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_up"):
 		owner.velocity.y -= 1

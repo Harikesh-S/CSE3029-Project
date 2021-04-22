@@ -30,6 +30,14 @@ func GetDamage():
 func GetDashStreak(startPos : Vector2, endPos : Vector2, mousePos : Vector2):
 	return null
 
+# Virtual function to get dash max (recharge)
+func GetDashMax() -> int:
+	return 1
+
+# Virtual function to return color associated with the weapon
+func GetColor() -> Color:
+	return Color(1,1,1,1)
+
 # Virtual function. Corresponds to the `_process()` callback.
 func update(_delta: float) -> void:
 	pass

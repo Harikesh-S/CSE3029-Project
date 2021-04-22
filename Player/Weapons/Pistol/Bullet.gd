@@ -22,6 +22,7 @@ func hit() -> void:
 
 func GetDamage():
 	if(active):
+		emit_signal("hit_enemy",1)
 		hit()
 		if(rand_range(0, 1)<CRIT_RATE):
 			return [DAMAGE_CRIT,true]

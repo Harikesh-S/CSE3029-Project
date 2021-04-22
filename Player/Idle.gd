@@ -13,7 +13,8 @@ func Update(delta: float) -> void:
 	if Input.is_action_pressed("shoot"):
 		owner.ShootWeapon()
 	if Input.is_action_just_pressed("dash"):
-		stateMachine.TransitionTo("Dash")
+		if(owner.CanDash()):
+			stateMachine.TransitionTo("Dash")
 	if (Input.is_action_pressed("move_up") or
 		Input.is_action_pressed("move_down") or
 		Input.is_action_pressed("move_left") or

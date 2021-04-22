@@ -16,5 +16,5 @@ func _ready():
 	self.global_position = startPos
 	self.look_at(mousePos)
 	tween.interpolate_property(self,'global_position',startPos,endPos,0.1,Tween.TRANS_LINEAR,Tween.EASE_OUT)
-	print(tween.start())
+	tween.start()
 	tween.connect("tween_all_completed",self,"Destroy")

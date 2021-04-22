@@ -26,6 +26,12 @@ func GetDashDistanceSquared() -> int:
 func GetDamage():
 	return [100,true]
 
+func GetColor() -> Color:
+	return Color("#6dead6")
+
+func GetDashMax() -> int:
+	return 5
+
 func GetDashStreak(startPos : Vector2, endPos : Vector2, mousePos : Vector2):
 	var streak = streakRes.instance()
 	streak.startPos = startPos

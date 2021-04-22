@@ -1,4 +1,9 @@
 extends KinematicBody2D
+
+# signals
+signal health_updated(healthRatio)
+signal dash_updated(dashRatio)
+
 # Movement velocity
 var velocity = Vector2(0,0)
 # Variables used for updating animations
@@ -11,6 +16,8 @@ export var initialMeleeWeapon = NodePath("Parts/Melee Weapons/Sword")
 onready var currentMeleeWeapon = get_node(initialMeleeWeapon)
 export var initialRangedWeapon = NodePath("Parts/Ranged Weapons/Pistol")
 onready var currentRangedWeapon = get_node(initialRangedWeapon)
+onready var dashMax = currentMeleeWeapon.GetDashMax()
+onready var dashCount = dashMax
 
 func _ready():
 	pass
@@ -24,6 +31,29 @@ func _process(delta):
 
 func _physics_process(delta):
 	move_and_slide(velocity)
+
+func ShootWeapon():
+	
+	if(currentRangedWeapon.ReadyToShoot()):
+		var bullet = currentRangedWeapon.Shoot(get_global_mouse_position())
+		get_parent().add_child(bullet)
+		bullet.connect("hit_enemy",self,"IncrementDash")
+
+func Streak(start):
+	dashCount = 0
+	get_parent().add_child(currentMeleeWeapon.GetDashStreak(start,global_position,globalMousePos))
+	emit_signal("dash_updated",0)
+
+func CanDash():
+	if(dashCount>=dashMax):
+		return true
+	return false
+
+func IncrementDash(amount):
+	if(dashCount<dashMax):
+		dashCount+=amount
+		emit_signal("dash_updated",float(dashCount)/float(dashMax))
+
 
 class Sorter:
 	# Used to sort body parts based on index
@@ -59,10 +89,3 @@ func UpdateBodyAnimation():
 		for i in range(bodyParts.size()):
 			if(bodyParts[i][0].get_index()!=i):
 				$Parts.move_child(bodyParts[i][0],i)
-
-func ShootWeapon():
-	if(currentRangedWeapon.ReadyToShoot()):
-		get_parent().add_child(currentRangedWeapon.Shoot(get_global_mouse_position()))
-
-func Streak(start):
-	get_parent().add_child(currentMeleeWeapon.GetDashStreak(start,global_position,globalMousePos))

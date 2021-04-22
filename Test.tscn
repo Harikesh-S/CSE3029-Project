@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/Dummy/Dummy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tiles/tileset1.tres" type="TileSet" id=3]
 [ext_resource path="res://Scenes/FollowCamera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/GUI/GUI.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -28,41 +29,6 @@ limit_right = 1950
 limit_bottom = 990
 limit_smoothed = true
 
-[node name="Dummy" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 638.62, 328.049 )
-scale = Vector2( 2, 2 )
-z_as_relative = false
-
-[node name="Dummy2" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 812, 358 )
-scale = Vector2( 2, 2 )
-z_as_relative = false
-
-[node name="Dummy3" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 1206.12, 663.125 )
-scale = Vector2( 2, 2 )
-z_as_relative = false
-
-[node name="Dummy4" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 1712.54, 269.005 )
-scale = Vector2( 2, 2 )
-z_as_relative = false
-
-[node name="Dummy5" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 1657.45, 516.919 )
-scale = Vector2( 2, 2 )
-z_as_relative = false
-
-[node name="Dummy6" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 1803.66, 622.866 )
-scale = Vector2( 2, 2 )
-z_as_relative = false
-
-[node name="Dummy7" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 292.863, 756.358 )
-scale = Vector2( 2, 2 )
-z_as_relative = false
-
 [node name="Level2" type="TileMap" parent="YSort"]
 scale = Vector2( 2, 2 )
 tile_set = ExtResource( 3 )
@@ -79,5 +45,45 @@ cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( 65586, 1, 0, 65587, 1, 1, 65588, 1, 1, 65589, 1, 2, 65590, 1, 1, 65591, 1, 2, 65592, 1, 1, 65593, 1, 1, 65594, 1, 1, 65595, 1, 1, 65596, 1, 1, 65597, 1, 1, 65598, 1, 2, 65599, 1, 3, 327688, 1, 0, 327689, 1, 1, 327690, 1, 1, 327691, 1, 2, 327692, 1, 1, 327693, 1, 2, 327694, 1, 2, 327695, 1, 2, 327696, 1, 1, 327697, 1, 2, 327698, 1, 1, 327699, 1, 2, 327700, 1, 2, 327701, 1, 1, 327702, 1, 1, 327703, 1, 1, 327704, 1, 2, 327705, 1, 2, 327706, 1, 1, 327707, 1, 1, 327708, 1, 2, 327709, 1, 1, 327710, 1, 2, 327711, 1, 1, 327712, 1, 2, 327713, 1, 3, 655381, 1, 0, 655382, 1, 1, 655383, 1, 3, 655394, 1, 0, 655395, 1, 2, 655396, 1, 2, 655397, 1, 2, 655398, 1, 2, 655399, 1, 1, 655400, 1, 1, 655401, 1, 1, 655402, 1, 1, 655403, 1, 1, 655404, 1, 1, 655405, 1, 2, 655406, 1, 2, 655407, 1, 2, 655408, 1, 1, 655409, 1, 3, 720915, 1, 0, 720916, 1, 3, 1114126, 1, 0, 1114127, 1, 3, 1114150, 1, 0, 1114151, 1, 2, 1114152, 1, 1, 1114153, 1, 3, 1507348, 1, 0, 1507349, 1, 2, 1507350, 1, 1, 1507351, 1, 2, 1507352, 1, 1, 1507353, 1, 3, 1507389, 0, 0, 1966083, 1, 0, 1966084, 1, 1, 1966085, 1, 2, 1966086, 1, 2, 1966087, 1, 1, 1966088, 1, 2, 1966089, 1, 1, 1966090, 1, 1, 1966091, 1, 2, 1966092, 1, 2, 1966093, 1, 2, 1966094, 1, 1, 1966095, 1, 2, 1966096, 1, 1, 1966097, 1, 1, 1966098, 1, 2, 1966099, 1, 2, 1966100, 1, 1, 1966101, 1, 3, 2031674, 1, 0, 2359349, 1, 0, 2359350, 1, 2, 2359351, 1, 2, 2359352, 1, 1, 2359353, 1, 2, 2359354, 1, 2, 2359355, 1, 2, 2359356, 1, 2, 2359357, 1, 3 )
 
+[node name="Enemies" type="YSort" parent="YSort"]
+
+[node name="Dummy" parent="YSort/Enemies" instance=ExtResource( 2 )]
+position = Vector2( 638.62, 328.049 )
+scale = Vector2( 2, 2 )
+z_as_relative = false
+
+[node name="Dummy2" parent="YSort/Enemies" instance=ExtResource( 2 )]
+position = Vector2( 812, 358 )
+scale = Vector2( 2, 2 )
+z_as_relative = false
+
+[node name="Dummy3" parent="YSort/Enemies" instance=ExtResource( 2 )]
+position = Vector2( 1206.12, 663.125 )
+scale = Vector2( 2, 2 )
+z_as_relative = false
+
+[node name="Dummy4" parent="YSort/Enemies" instance=ExtResource( 2 )]
+position = Vector2( 1712.54, 269.005 )
+scale = Vector2( 2, 2 )
+z_as_relative = false
+
+[node name="Dummy5" parent="YSort/Enemies" instance=ExtResource( 2 )]
+position = Vector2( 1697.81, 305.013 )
+scale = Vector2( 2, 2 )
+z_as_relative = false
+
+[node name="Dummy6" parent="YSort/Enemies" instance=ExtResource( 2 )]
+position = Vector2( 1738.91, 294.076 )
+scale = Vector2( 2, 2 )
+z_as_relative = false
+
+[node name="Dummy7" parent="YSort/Enemies" instance=ExtResource( 2 )]
+position = Vector2( 292.863, 756.358 )
+scale = Vector2( 2, 2 )
+z_as_relative = false
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.305882, 0.278431, 0.278431, 1 )
+
+[node name="GUI" parent="." instance=ExtResource( 5 )]
+playerPath = NodePath("../YSort/Player")
