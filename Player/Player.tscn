@@ -1,0 +1,326 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Player/walk.png" type="Texture" id=1]
+[ext_resource path="res://Player/body.png" type="Texture" id=2]
+[ext_resource path="res://Player/HandL.png" type="Texture" id=3]
+[ext_resource path="res://Player/HandR.png" type="Texture" id=4]
+[ext_resource path="res://Player/Player.gd" type="Script" id=5]
+[ext_resource path="res://Player/StateMachine.gd" type="Script" id=6]
+[ext_resource path="res://Player/Idle.gd" type="Script" id=7]
+[ext_resource path="res://Player/Walk.gd" type="Script" id=8]
+[ext_resource path="res://Player/Weapons/Pistol/Pistol.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Player/Weapons/Sword/Sword.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Other Resources/light.png" type="Texture" id=11]
+[ext_resource path="res://Player/Dash.gd" type="Script" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10.9499, 5.68749 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Left"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Parts/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Parts/HandL:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1e-05, 0.00054178, 2.19097e-06, 2.18166e-08, 9.35299e-08 ),
+"update": 0,
+"values": [ Vector2( -10.502, 6 ), Vector2( -10.502, 6 ), Vector2( -10.502, 5 ), Vector2( -10.502, 6 ), Vector2( -10.502, 6 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Parts/HandR:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 4.78878e-05, 1.4237e-05, 5.47741e-07, 2.4788e-05, 1 ),
+"update": 0,
+"values": [ Vector2( 6.502, 5 ), Vector2( 6.502, 5 ), Vector2( 6.502, 6 ), Vector2( 6.502, 6 ), Vector2( 6.502, 5 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Left-Back"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Parts/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 15, 13, 14, 15 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Parts/HandL:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1e-05, 0.00054178, 2.19097e-06, 2.18166e-08, 9.35299e-08 ),
+"update": 0,
+"values": [ Vector2( -10.502, 6 ), Vector2( -10.502, 6 ), Vector2( -10.502, 5 ), Vector2( -10.502, 6 ), Vector2( -10.502, 6 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Parts/HandR:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 4.78878e-05, 1.4237e-05, 5.47741e-07, 2.4788e-05, 1 ),
+"update": 0,
+"values": [ Vector2( 6.502, 5 ), Vector2( 6.502, 5 ), Vector2( 6.502, 6 ), Vector2( 6.502, 6 ), Vector2( 6.502, 5 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Parts/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Parts/HandL:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1e-05, 0.00054178, 2.19097e-06, 2.18166e-08, 9.35299e-08 ),
+"update": 0,
+"values": [ Vector2( -10.502, 6 ), Vector2( -10.502, 6 ), Vector2( -10.502, 5 ), Vector2( -10.502, 6 ), Vector2( -10.502, 6 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Parts/HandR:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 4.78878e-05, 1.4237e-05, 5.47741e-07, 2.4788e-05, 1 ),
+"update": 0,
+"values": [ Vector2( 6.502, 5 ), Vector2( 6.502, 5 ), Vector2( 6.502, 6 ), Vector2( 6.502, 6 ), Vector2( 6.502, 5 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Parts/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Parts/HandL:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1e-05, 0.00054178, 2.19097e-06, 2.18166e-08, 9.35299e-08 ),
+"update": 0,
+"values": [ Vector2( -10.502, 6 ), Vector2( -10.502, 6 ), Vector2( -10.502, 5 ), Vector2( -10.502, 6 ), Vector2( -10.502, 6 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Parts/HandR:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 4.78878e-05, 1.4237e-05, 5.47741e-07, 2.4788e-05, 1 ),
+"update": 0,
+"values": [ Vector2( 6.502, 5 ), Vector2( 6.502, 5 ), Vector2( 6.502, 6 ), Vector2( 6.502, 6 ), Vector2( 6.502, 5 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Idle"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Parts/Body/Legs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Walk"
+length = 2.2
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Parts/Body/Legs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.8, 1, 1.2, 1.4, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1, 0, 3, 4, 3, 0 ]
+}
+
+[sub_resource type="OccluderPolygon2D" id=8]
+polygon = PoolVector2Array( -9.9774, 5.93972, 10.2391, 5.93972, 8.90126, 13.9669, -8.78819, 13.8182 )
+
+[node name="Player" type="KinematicBody2D"]
+z_as_relative = false
+collision_layer = 2
+collision_mask = 7
+script = ExtResource( 5 )
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2( 0.181087, 8.65419 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Left = SubResource( 2 )
+anims/Left-Back = SubResource( 3 )
+anims/Right = SubResource( 4 )
+anims/Right-Back = SubResource( 5 )
+
+[node name="LegsAnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/Idle = SubResource( 6 )
+anims/Walk = SubResource( 7 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 7 )
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource( 8 )
+
+[node name="Dash" type="Node" parent="StateMachine"]
+script = ExtResource( 12 )
+
+[node name="Ready" type="Timer" parent="StateMachine/Dash"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Recovery" type="Timer" parent="StateMachine/Dash"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Parts" type="Node2D" parent="."]
+
+[node name="Body" type="Sprite" parent="Parts"]
+light_mask = 2
+texture = ExtResource( 2 )
+vframes = 4
+hframes = 4
+frame = 8
+
+[node name="Legs" type="Sprite" parent="Parts/Body"]
+position = Vector2( 0, 11 )
+texture = ExtResource( 1 )
+vframes = 5
+
+[node name="HandL" type="Position2D" parent="Parts"]
+position = Vector2( -10.502, 6 )
+z_as_relative = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Parts/HandL"]
+light_mask = 2
+z_as_relative = false
+texture = ExtResource( 3 )
+centered = false
+
+[node name="HandR" type="Position2D" parent="Parts"]
+position = Vector2( 6.502, 5 )
+z_as_relative = false
+
+[node name="Sprite" type="Sprite" parent="Parts/HandR"]
+light_mask = 2
+z_as_relative = false
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Melee Weapons" type="Node2D" parent="Parts"]
+position = Vector2( -7.72091, 7.92028 )
+z_as_relative = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sword" parent="Parts/Melee Weapons" instance=ExtResource( 10 )]
+
+[node name="Ranged Weapons" type="Node2D" parent="Parts"]
+position = Vector2( 8.42228, 6.65541 )
+z_as_relative = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Pistol" parent="Parts/Ranged Weapons" instance=ExtResource( 9 )]
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, 3.44589 )
+texture = ExtResource( 11 )
+texture_scale = 0.25
+range_item_cull_mask = 3
+shadow_enabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 2
+occluder = SubResource( 8 )
+light_mask = 2
+[connection signal="timeout" from="StateMachine/Dash/Ready" to="StateMachine/Dash" method="_on_Ready_timeout"]
+[connection signal="timeout" from="StateMachine/Dash/Recovery" to="StateMachine/Dash" method="_on_Recovery_timeout"]
