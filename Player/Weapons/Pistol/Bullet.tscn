@@ -100,7 +100,7 @@ script = ExtResource( 3 )
 light_mask = 2
 z_index = 1
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -142,3 +142,4 @@ explosiveness = 1.0
 fract_delta = false
 process_material = SubResource( 11 )
 texture = ExtResource( 5 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

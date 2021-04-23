@@ -15,6 +15,8 @@ func Update(delta: float) -> void:
 	if Input.is_action_just_pressed("dash"):
 		if(owner.CanDash()):
 			stateMachine.TransitionTo("Dash")
+	if Input.is_action_just_pressed("change_melee"):
+		owner.ChangeMeleeWeapon()
 	if (Input.is_action_pressed("move_up") or
 		Input.is_action_pressed("move_down") or
 		Input.is_action_pressed("move_left") or

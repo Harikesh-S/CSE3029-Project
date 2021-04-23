@@ -3,7 +3,8 @@ extends Bullet
 const DAMAGE = 10
 const DAMAGE_CRIT = 15
 const CRIT_RATE = 0.5 # Out of 1
-const SPEED = 1000
+const SPEED = 800
+const DASH_RECHARGE = 2
 var active = true
 
 func _ready():
@@ -20,14 +21,13 @@ func hit() -> void:
 	$Timer.start()
 	$Timer.connect("timeout",self,"destroy")
 
-func GetDamage():
-	if(active):
-		emit_signal("hit_enemy",1)
-		hit()
-		if(rand_range(0, 1)<CRIT_RATE):
-			return [DAMAGE_CRIT,true]
-		else:
-			return [DAMAGE,false]
-
 func GetSpeed() -> int:
 	return SPEED
+
+func _on_Area2D_area_entered(area):
+	if(rand_range(0, 1)<CRIT_RATE):
+		area.get_parent().OnHit([DAMAGE_CRIT,true,false])
+	else:
+		area.get_parent().OnHit([DAMAGE,false,false])
+	emit_signal("hit_enemy",DASH_RECHARGE)
+	hit()

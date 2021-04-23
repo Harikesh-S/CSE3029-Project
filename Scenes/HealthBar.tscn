@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/HealthBar.gd" type="Script" id=1]
+[ext_resource path="res://Other Resources/Health Bar/progress.png" type="Texture" id=2]
+[ext_resource path="res://Other Resources/Health Bar/over.png" type="Texture" id=3]
+[ext_resource path="res://Other Resources/Health Bar/under.png" type="Texture" id=4]
+[ext_resource path="res://Other Resources/Health Bar/progressRed.png" type="Texture" id=5]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+light_mode = 1
+
+[sub_resource type="Animation" id=2]
+resource_name = "shake"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bars:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -13.435 ), Vector2( 0, -13.435 ), Vector2( 0.707108, 4.5962 ), Vector2( 0, 0 ) ]
+}
+
+[node name="HealthBar" type="Control"]
+material = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/shake = SubResource( 2 )
+
+[node name="Bars" type="Control" parent="."]
+use_parent_material = true
+margin_left = 0.580731
+margin_top = 1.3736
+margin_right = 40.5807
+margin_bottom = 41.3736
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgressRed" type="TextureProgress" parent="Bars"]
+use_parent_material = true
+margin_right = 200.0
+margin_bottom = 50.0
+value = 50.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="Bars"]
+use_parent_material = true
+margin_right = 200.0
+margin_bottom = 50.0
+value = 50.0
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+tint_over = Color( 0, 0, 0, 1 )
+tint_progress = Color( 0.203922, 0.792157, 0.137255, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

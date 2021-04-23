@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Player/Weapons/Sword/DashStreak.gd" type="Script" id=1]
+[ext_resource path="res://Player/Weapons/Greatsword/DashStreak.gd" type="Script" id=1]
 [ext_resource path="res://Particles/floaty_32.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -30,9 +30,7 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 300.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-tangential_accel = 100.0
-angle = 45.0
-scale = 2.0
+scale = 4.0
 color_ramp = SubResource( 4 )
 anim_speed = 1.0
 
@@ -55,7 +53,7 @@ shape = SubResource( 1 )
 [node name="Particles2D" type="Particles2D" parent="."]
 material = SubResource( 2 )
 amount = 3
-lifetime = 0.1
+lifetime = 0.3
 fract_delta = false
 process_material = SubResource( 5 )
 texture = ExtResource( 2 )

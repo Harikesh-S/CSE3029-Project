@@ -22,10 +22,6 @@ func GetDashDistance() -> int:
 func GetDashDistanceSquared() -> int:
 	return 0
 
-# Virtual function to return dash damage for current melee weapon
-func GetDamage():
-	return [0,false]
-
 # Virtual function to create and return a dash streak
 func GetDashStreak(startPos : Vector2, endPos : Vector2, mousePos : Vector2):
 	return null

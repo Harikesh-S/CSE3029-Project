@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Player/GUI/hearts.png" type="Texture" id=1]
 [ext_resource path="res://Player/GUI/GUI.gd" type="Script" id=2]
-[ext_resource path="res://Player/GUI/sprint.png" type="Texture" id=3]
 [ext_resource path="res://Particles/floaty_32.png" type="Texture" id=4]
-[ext_resource path="res://Player/GUI/circularUnder.png" type="Texture" id=5]
-[ext_resource path="res://Player/GUI/circularProgress.png" type="Texture" id=6]
-[ext_resource path="res://Player/GUI/circularOver.png" type="Texture" id=7]
+[ext_resource path="res://Player/GUI/Dash/over.png" type="Texture" id=5]
+[ext_resource path="res://Player/GUI/Dash/under.png" type="Texture" id=6]
+[ext_resource path="res://Player/GUI/Dash/progress.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/HealthBar.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.7, 0.85 ),
 "transitions": PoolRealArray( 1, 0.535887, 0.406126 ),
 "update": 0,
-"values": [ Vector2( 0.1, 0.1 ), Vector2( 0.15, 0.15 ), Vector2( 0.1, 0.1 ) ]
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 0.25, 0.25 ), Vector2( 0.2, 0.2 ) ]
 }
 
 [sub_resource type="CanvasItemMaterial" id=2]
@@ -34,13 +34,12 @@ particles_anim_v_frames = 7
 particles_anim_loop = false
 
 [sub_resource type="ParticlesMaterial" id=3]
-emission_shape = 1
-emission_sphere_radius = 32.65
+emission_shape = 2
+emission_box_extents = Vector3( 80, 1, 1 )
 flag_disable_z = true
-direction = Vector3( -1, 0, 0 )
+direction = Vector3( -1, -1, 0 )
 spread = 19.35
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 102.5
+gravity = Vector3( 0, 100, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 2.0
@@ -50,19 +49,26 @@ anim_speed = 1.0
 script = ExtResource( 2 )
 
 [node name="Health" type="Control" parent="."]
-margin_left = 67.9187
-margin_top = 59.2422
-margin_right = 167.919
-margin_bottom = 159.242
+margin_left = 34.0
+margin_top = 23.0
+margin_right = 134.0
+margin_bottom = 123.0
 rect_min_size = Vector2( 100, 100 )
+rect_scale = Vector2( 0.5, 0.5 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
+[node name="HealthBar" parent="Health" instance=ExtResource( 8 )]
+margin_left = -9.96564
+margin_top = -26.2933
+margin_right = -9.96564
+margin_bottom = -26.2933
+
 [node name="Heart" type="TextureRect" parent="Health"]
+visible = false
 self_modulate = Color( 0.847059, 0.105882, 0.105882, 1 )
-rect_scale = Vector2( 0.100157, 0.100157 )
+rect_scale = Vector2( 0.235724, 0.235724 )
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 4
@@ -74,10 +80,11 @@ __meta__ = {
 anims/default = SubResource( 1 )
 
 [node name="Dash" type="Control" parent="."]
-margin_left = 92.3567
-margin_top = 177.103
-margin_right = 132.357
-margin_bottom = 217.103
+margin_left = 29.5387
+margin_top = 45.6906
+margin_right = 222.539
+margin_bottom = 60.691
+rect_scale = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -89,34 +96,23 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = -100.0
+margin_top = -16.0
 margin_right = 100.0
-margin_bottom = 100.0
-rect_scale = Vector2( 0.75, 0.75 )
-value = 100.0
-texture_under = ExtResource( 5 )
-texture_over = ExtResource( 7 )
-texture_progress = ExtResource( 6 )
-fill_mode = 4
-tint_progress = Color( 0.0392157, 0.607843, 0.517647, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Icon" type="TextureRect" parent="Dash"]
-rect_scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 4
+margin_bottom = 16.0
+value = 50.0
+rounded = true
+texture_under = ExtResource( 6 )
+texture_over = ExtResource( 5 )
+texture_progress = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Particles2D" type="Particles2D" parent="Dash"]
 material = SubResource( 2 )
-position = Vector2( 21, -1 )
+position = Vector2( 111.023, 5.42474 )
 amount = 10
-lifetime = 0.5
+fract_delta = false
 process_material = SubResource( 3 )
 texture = ExtResource( 4 )
 

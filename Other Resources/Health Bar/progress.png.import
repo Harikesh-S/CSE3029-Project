@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprint-shadow-stroke.png-ecadd2d591b4298bc5f249df47c6631f.stex"
+path="res://.import/progress.png-8b23cd47176d3154de8f8502af0c0516.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/GUI/sprint-shadow-stroke.png"
-dest_files=[ "res://.import/sprint-shadow-stroke.png-ecadd2d591b4298bc5f249df47c6631f.stex" ]
+source_file="res://Other Resources/Health Bar/progress.png"
+dest_files=[ "res://.import/progress.png-8b23cd47176d3154de8f8502af0c0516.stex" ]
 
 [params]
 

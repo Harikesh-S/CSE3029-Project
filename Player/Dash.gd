@@ -22,6 +22,7 @@ func Enter(_msg := {}) -> void:
 	# Start wait timer
 	start = owner.global_position
 	ready.start(owner.currentMeleeWeapon.dashStartTime)
+	owner.currentMeleeWeapon.dashStart.emitting = true
 
 func _on_Ready_timeout():
 	# Dash

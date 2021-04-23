@@ -1,7 +1,7 @@
 # Walk.gd
 extends State
 
-export var SPEED = 300
+export var SPEED = 200
 onready var legsAnimationPlayer = owner.get_node("LegsAnimationPlayer")
 
 # Upon entering the state, we set the Player's leg animation to walk.
@@ -16,6 +16,8 @@ func Update(delta: float) -> void:
 	if Input.is_action_just_pressed("dash"):
 		if(owner.CanDash()):
 			stateMachine.TransitionTo("Dash")
+	if Input.is_action_just_pressed("change_melee"):
+		owner.ChangeMeleeWeapon()
 	owner.velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_up"):
 		owner.velocity.y -= 1

@@ -1,18 +1,18 @@
 extends WeaponMelee
 
 # Rotation and z index for each quadrant
-export var rotation = [0,0,-90,90]
-export var flip = [-1,1,-1,1]
-export var relIndex = [3,3,-3,-3]
-onready var scaleX = self.scale.x
+export var rotation = [0,0,0,0]
+export var flip = [1,-1,1,-1]
+export var relIndex = [-3,-3,3,3]
 # Dash streak resource
-var streakRes = preload("res://Player/Weapons/Sword/DashStreak.tscn")
+var streakRes = preload("res://Player/Weapons/Greatsword/DashStreak.tscn")
 onready var dashReady = $DashReady
 onready var dashStart = $DashStart
+onready var scaleX = self.scale.x
 
 func _ready():
-	dashStartTime = 0.2
-	dashEndTime = 0.2
+	dashStartTime = 0.5
+	dashEndTime = 0.5
 	dashReady.modulate = GetColor()
 	dashStart.modulate = GetColor()
 
@@ -25,19 +25,16 @@ func GetIndex(quadrantIndex : int) -> int:
 	return relIndex[quadrantIndex]
 
 func GetDashDistance() -> int:
-	return 200
+	return 100
 	
 func GetDashDistanceSquared() -> int:
-	return 40000
-
-func GetDamage():
-	return [50,true]
+	return 10000
 
 func GetColor() -> Color:
-	return Color("#6dead6")
+	return Color("#ec273f")
 
 func GetDashMax() -> int:
-	return 5
+	return 8
 
 func GetDashStreak(startPos : Vector2, endPos : Vector2, mousePos : Vector2):
 	var streak = streakRes.instance()

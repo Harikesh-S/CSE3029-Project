@@ -15,6 +15,5 @@ func _ready():
 	tween.start()
 	tween.connect("tween_all_completed",self,"Destroy")
 
-
 func _on_Area2D_area_entered(area):
-	area.get_parent().OnHit([50,true,true])
+	area.get_parent().OnHit([100,true,true])

@@ -4,21 +4,18 @@ extends KinematicBody2D
 
 var floatingTextRes = preload("res://Scenes/FloatingText.tscn")
 
-var animationPlayer : AnimationPlayer
-var health : int
-var area2D : Area2D
+var health : float
+var maxHealth : float
 
-var damageTaken
+onready var animationPlayer = $AnimationPlayer
+onready var area2D = $Area2D
+onready var healthBar = $HealthBar
 
 func Start():
+	health = maxHealth
 	animationPlayer.play("Idle")
 	animationPlayer.connect("animation_finished",self,"AnimationFinished")
-	area2D.connect("area_entered",self,"AreaEntered")
-
-func AreaEntered(area : Area2D):
-	damageTaken = area.get_parent().GetDamage()
-	if(damageTaken):	# Only apply damage taken if the object returned damage
-		OnHit(damageTaken)
+	healthBar.UpdateValue(health/maxHealth)
 
 func AnimationFinished(animationName : String):
 	if(animationName=="Hit"):
@@ -33,8 +30,8 @@ func OnHit(damage) -> void:
 		floatingText.type = "ED"
 	add_child(floatingText)
 	self.health -= damage[0]
-	print(health)
 	animationPlayer.play("Hit")
+	healthBar.UpdateValue(health/maxHealth)
 
 # Virtual function. Corresponds to the `_physics_process()` callback.
 func physics_update(_delta: float) -> void:

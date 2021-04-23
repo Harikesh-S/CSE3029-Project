@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/circularOver.png-1b40e9900443f4903a26b54278f9687d.stex"
+path="res://.import/progressRed.png-c30f72880d394e756229ff97c09e54cf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/GUI/circularOver.png"
-dest_files=[ "res://.import/circularOver.png-1b40e9900443f4903a26b54278f9687d.stex" ]
+source_file="res://Other Resources/Health Bar/progressRed.png"
+dest_files=[ "res://.import/progressRed.png-c30f72880d394e756229ff97c09e54cf.stex" ]
 
 [params]
 

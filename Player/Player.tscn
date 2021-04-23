@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Player/walk.png" type="Texture" id=1]
 [ext_resource path="res://Player/body.png" type="Texture" id=2]
@@ -12,9 +12,13 @@
 [ext_resource path="res://Player/Weapons/Sword/Sword.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Other Resources/light.png" type="Texture" id=11]
 [ext_resource path="res://Player/Dash.gd" type="Script" id=12]
+[ext_resource path="res://Player/Weapons/Greatsword/Greatsword.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.9499, 5.68749 )
+
+[sub_resource type="OccluderPolygon2D" id=8]
+polygon = PoolVector2Array( -9.9774, 5.93972, 10.2391, 5.93972, 8.90126, 13.9669, -8.78819, 13.8182 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Left"
@@ -212,9 +216,6 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1, 0, 3, 4, 3, 0 ]
 }
 
-[sub_resource type="OccluderPolygon2D" id=8]
-polygon = PoolVector2Array( -9.9774, 5.93972, 10.2391, 5.93972, 8.90126, 13.9669, -8.78819, 13.8182 )
-
 [node name="Player" type="KinematicBody2D"]
 z_as_relative = false
 collision_layer = 2
@@ -224,6 +225,19 @@ script = ExtResource( 5 )
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2( 0.181087, 8.65419 )
 shape = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, 3.44589 )
+texture = ExtResource( 11 )
+texture_scale = 0.25
+range_item_cull_mask = 3
+shadow_enabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+light_mask = 2
+occluder = SubResource( 8 )
+light_mask = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Left = SubResource( 2 )
@@ -294,13 +308,16 @@ texture = ExtResource( 4 )
 centered = false
 
 [node name="Melee Weapons" type="Node2D" parent="Parts"]
-position = Vector2( -7.72091, 7.92028 )
 z_as_relative = false
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sword" parent="Parts/Melee Weapons" instance=ExtResource( 10 )]
+visible = false
+position = Vector2( -8.18948, 8.50447 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Greatsword" parent="Parts/Melee Weapons" instance=ExtResource( 13 )]
+visible = false
+position = Vector2( -1.25993, 11.9692 )
 
 [node name="Ranged Weapons" type="Node2D" parent="Parts"]
 position = Vector2( 8.42228, 6.65541 )
@@ -311,16 +328,7 @@ __meta__ = {
 
 [node name="Pistol" parent="Parts/Ranged Weapons" instance=ExtResource( 9 )]
 
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 0, 3.44589 )
-texture = ExtResource( 11 )
-texture_scale = 0.25
-range_item_cull_mask = 3
-shadow_enabled = true
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-light_mask = 2
-occluder = SubResource( 8 )
-light_mask = 2
+[node name="MeleeSwitchTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="timeout" from="StateMachine/Dash/Ready" to="StateMachine/Dash" method="_on_Ready_timeout"]
 [connection signal="timeout" from="StateMachine/Dash/Recovery" to="StateMachine/Dash" method="_on_Recovery_timeout"]

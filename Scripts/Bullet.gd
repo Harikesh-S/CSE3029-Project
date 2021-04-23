@@ -16,9 +16,6 @@ func SetDirection(dir : Vector2,globalMousePos : Vector2) -> void:
 	velocity = dir*GetSpeed()
 	look_at(globalMousePos)
 
-func GetDamage():
-	return [0,false]
-
 func GetSpeed() -> int:
 	return 0
 

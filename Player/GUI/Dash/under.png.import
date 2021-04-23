@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprint-shadow.png-1535a2581f08a07dee7c0c6148cfa331.stex"
+path="res://.import/under.png-793da8a515dd2d3d641a7cc8d86e04fe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/GUI/sprint-shadow.png"
-dest_files=[ "res://.import/sprint-shadow.png-1535a2581f08a07dee7c0c6148cfa331.stex" ]
+source_file="res://Player/GUI/Dash/under.png"
+dest_files=[ "res://.import/under.png-793da8a515dd2d3d641a7cc8d86e04fe.stex" ]
 
 [params]
 

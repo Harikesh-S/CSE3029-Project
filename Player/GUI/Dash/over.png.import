@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/circularUnder.png-56de42aa4bafa48a96aefb3f7c93c82e.stex"
+path="res://.import/over.png-dda050153e2b57d5d93f7f8a6734597c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/GUI/circularUnder.png"
-dest_files=[ "res://.import/circularUnder.png-56de42aa4bafa48a96aefb3f7c93c82e.stex" ]
+source_file="res://Player/GUI/Dash/over.png"
+dest_files=[ "res://.import/over.png-dda050153e2b57d5d93f7f8a6734597c.stex" ]
 
 [params]
 

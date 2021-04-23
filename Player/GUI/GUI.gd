@@ -5,7 +5,8 @@ export var playerPath = NodePath()
 onready var player = get_node(playerPath)
 # Storing required nodes to avoid calling getnode
 onready var heartAnimation = $Health/Heart/AnimationPlayer
-onready var dashIcon = $Dash/Icon
+onready var healthBar = $Health/HealthBar
+
 onready var dashParticles = $Dash/Particles2D
 onready var dashProgress = $Dash/TextureProgress
 onready var dashTween = $Dash/Tween
@@ -22,12 +23,13 @@ func _ready():
 
 func UpdateHealth(ratio):
 	heartAnimation.play("default")
+	healthBar.UpdateValue(ratio)
 
 func UpdateDash(ratio):
 	var color : Color = player.currentMeleeWeapon.GetColor()
-	dashIcon.modulate = color
 	dashParticles.process_material.set("color",color)
 	dashParticles.emitting = bool(ratio>=1)
+	dashProgress.tint_progress = color
 	dashTween.remove_all()
-	dashTween.interpolate_property(dashProgress,"value",null,int(ratio*100),0.5,Tween.TRANS_SINE,Tween.EASE_OUT)
+	dashTween.interpolate_property(dashProgress,"value",null,int(ratio*100),0.5,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
 	dashTween.start()
