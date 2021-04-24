@@ -26,11 +26,15 @@ func MinDistPoint(globalMousePos: Vector2) -> Vector2:
 func ReloadComplete() -> void:
 	pass
 
-# Function to start reload
+# Virtual function to start reload
 func Reload() -> void:
 	pass
 
-# Function to cancel reload 
+# Virtual function to instant reload (for dash kills)
+func InstantReload() -> void:
+	pass
+
+# Virtual function to cancel reload 
 func CancelReload() -> void:
 	pass
 

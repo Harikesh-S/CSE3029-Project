@@ -16,9 +16,9 @@ const COLORS = {
 func _ready():
 	label.set_text(str(amount))
 	label.set("custom_colors/font_color",COLORS[type])
-	tween.interpolate_property(self, 'scale', scale, Vector2(0.5,0.5), 0.2, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	tween.interpolate_property(self, 'position', position, position + Vector2(0,-30), 1, Tween.TRANS_EXPO, Tween.EASE_OUT)
-	tween.interpolate_property(self, 'scale', Vector2(0.5,0.5), Vector2(0.05,0.05), 0.7, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.3)
+	tween.interpolate_property(self, 'scale', scale, Vector2(0.5,0.5), 0.2, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	tween.interpolate_property(self, 'position', position, position + Vector2(10,-50), 1, Tween.TRANS_SINE, Tween.EASE_OUT)
+	tween.interpolate_property(self, 'scale', Vector2(0.5,0.5), Vector2(0.05,0.05), 0.7, Tween.TRANS_QUAD, Tween.EASE_OUT, 0.3)
 	tween.start()
 
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/streak1.png-43e41a29aa3016ec8b96349e4784e73c.stex"
+path="res://.import/ammoIdle0001.png-e2673d3f63da149b0d6dcab9ac02c223.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Particles/streak1.png"
-dest_files=[ "res://.import/streak1.png-43e41a29aa3016ec8b96349e4784e73c.stex" ]
+source_file="res://Player/GUI/Pistol UI/ammoIdle0001.png"
+dest_files=[ "res://.import/ammoIdle0001.png-e2673d3f63da149b0d6dcab9ac02c223.stex" ]
 
 [params]
 

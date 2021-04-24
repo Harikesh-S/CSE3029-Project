@@ -1,10 +1,9 @@
 extends CanvasLayer
 
-# Reference to player 
+# References
 export var playerPath = NodePath()
 onready var player = get_node(playerPath)
-# Storing required nodes to avoid calling getnode
-onready var heartAnimation = $Health/Heart/AnimationPlayer
+
 onready var healthBar = $Health/HealthBar
 
 var currentWeaponUI
@@ -27,9 +26,9 @@ func _ready():
 	player.connect("dash_changed",self,"ChangeDash")
 	player.connect("weapon_updated",self,"UpdateWeapon")
 	player.connect("weapon_changed",self,"ChangeWeapon")
+	player.connect("weapon_instant_reload",self,"InstantReload")
 
 func UpdateHealth(ratio):
-	heartAnimation.play("default")
 	healthBar.UpdateValue(ratio)
 
 func ChangeDash(color):
@@ -53,3 +52,6 @@ func ChangeWeapon(weaponUI):
 
 func UpdateWeapon():
 	currentWeaponUI.Update()
+
+func InstantReload():
+	currentWeaponUI.InstantReload()

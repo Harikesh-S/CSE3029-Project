@@ -6,6 +6,7 @@ signal dash_updated(dashRatio)
 signal dash_changed(color)
 signal weapon_updated()
 signal weapon_changed(weaponUIName)
+signal weapon_instant_reload()
 
 # Movement velocity
 var velocity = Vector2(0,0)
@@ -79,9 +80,17 @@ func _process(delta):
 		UpdateBodyAnimation()
 	# Track mouse cursor - Update the current weapon to aim towards the cursor
 	currentRangedWeapon.UpdatePosition(globalMousePos)
+	# If current weapon has no ammo, try to reload
+	if currentRangedWeapon.ammo == 0:
+		ReloadWeapon()
 
 func _physics_process(delta):
 	move_and_slide(velocity)
+
+func InstantReload():
+	currentRangedWeapon.InstantReload()
+	emit_signal("weapon_updated")
+	emit_signal("weapon_instant_reload")
 
 func ReloadWeapon():
 	currentRangedWeapon.Reload()

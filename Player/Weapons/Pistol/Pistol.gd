@@ -68,6 +68,10 @@ func CancelReload() -> void:
 func ReloadComplete() -> void:
 	ammo = maxAmmo
 
+func InstantReload() -> void:
+	CancelReload()
+	ammo = maxAmmo
+
 func Shoot(globalMousePos: Vector2) -> Bullet:
 	ammo -= 1
 	nextShot.start()

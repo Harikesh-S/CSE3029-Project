@@ -1,0 +1,675 @@
+[gd_scene load_steps=46 format=2]
+
+[ext_resource path="res://Player/GUI/Pistol UI/Pistol-UI.gd" type="Script" id=1]
+[ext_resource path="res://Player/GUI/Pistol UI/ammoUse0002.png" type="Texture" id=2]
+[ext_resource path="res://Player/GUI/Pistol UI/ammoReload0001.png" type="Texture" id=3]
+[ext_resource path="res://Player/GUI/Pistol UI/ammoReload0002.png" type="Texture" id=4]
+[ext_resource path="res://Player/Weapons/Pistol/pistol.png" type="Texture" id=5]
+[ext_resource path="res://Player/GUI/Pistol UI/ammoUse0003.png" type="Texture" id=6]
+[ext_resource path="res://Player/GUI/Pistol UI/ammoUse0004.png" type="Texture" id=7]
+[ext_resource path="res://Player/GUI/Pistol UI/ammoReload0000.png" type="Texture" id=8]
+[ext_resource path="res://Player/GUI/Pistol UI/ammoIdle0001.png" type="Texture" id=9]
+[ext_resource path="res://Player/GUI/Pistol UI/ammoIdle0000.png" type="Texture" id=10]
+[ext_resource path="res://Player/GUI/Pistol UI/ammoUse0000.png" type="Texture" id=11]
+[ext_resource path="res://Player/GUI/Pistol UI/ammoUse0001.png" type="Texture" id=12]
+[ext_resource path="res://Player/GUI/Pistol UI/ammoIdle0003.png" type="Texture" id=13]
+[ext_resource path="res://Player/GUI/Pistol UI/ammoIdle0002.png" type="Texture" id=14]
+[ext_resource path="res://Player/GUI/Pistol UI/ammoReload0003.png" type="Texture" id=15]
+[ext_resource path="res://Particles/random_selection.png" type="Texture" id=16]
+[ext_resource path="res://Player/GUI/Pistol UI/reloadUnder.png" type="Texture" id=17]
+[ext_resource path="res://Player/GUI/Pistol UI/reloadOver.png" type="Texture" id=18]
+[ext_resource path="res://Player/GUI/Pistol UI/reloadProgress.png" type="Texture" id=19]
+[ext_resource path="res://Particles/spotlight_8.png" type="Texture" id=20]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "reload",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "idle",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "use",
+"speed": 10.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "reload", false ],
+"method": "play"
+}, {
+"args": [ "idle", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "use"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "use", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=4]
+blend_mode = 1
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.481982, 0.959459 )
+colors = PoolColorArray( 0.968627, 0.952941, 0.717647, 1, 0.952941, 0.658824, 0.2, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0.0244898, 0.118182 ), 0.0, 0.285547, 0, 0, Vector2( 0.97551, 0.740455 ), -1.76326, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 44.19
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 10.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+scale = 0.2
+scale_curve = SubResource( 8 )
+color_ramp = SubResource( 6 )
+anim_speed = 1.0
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="Animation" id=10]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "reload", false ],
+"method": "play"
+}, {
+"args": [ "idle", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "use"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "use", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "reload", false ],
+"method": "play"
+}, {
+"args": [ "idle", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "use"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "use", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "reload", false ],
+"method": "play"
+}, {
+"args": [ "idle", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "use"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "use", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "reload", false ],
+"method": "play"
+}, {
+"args": [ "idle", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "use"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "use", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "reload", false ],
+"method": "play"
+}, {
+"args": [ "idle", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "use"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "use", false ],
+"method": "play"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=20]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id=21]
+offsets = PoolRealArray( 0, 0.536036, 0.725225, 0.986486 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.968627, 0.952941, 0.717647, 1, 0.952941, 0.658824, 0.2, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=22]
+gradient = SubResource( 21 )
+
+[sub_resource type="Curve" id=23]
+_data = [ Vector2( 0, 0.136117 ), 0.0, 2.52402, 0, 0, Vector2( 0.991837, 0.118865 ), -4.28322, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=24]
+curve = SubResource( 23 )
+
+[sub_resource type="ParticlesMaterial" id=25]
+emission_shape = 2
+emission_box_extents = Vector3( 10, 30, 1 )
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 800.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 50.0
+linear_accel_random = 1.0
+scale = 2.0
+scale_curve = SubResource( 24 )
+color_ramp = SubResource( 22 )
+
+[node name="Pistol-UI" type="Control"]
+anchor_top = -0.0014715
+anchor_right = 1.0
+anchor_bottom = 0.998529
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReloadProgress" type="TextureProgress" parent="."]
+visible = false
+margin_left = 4.43781
+margin_top = 2.91352
+margin_right = 184.438
+margin_bottom = 42.9135
+value = 50.0
+texture_under = ExtResource( 17 )
+texture_over = ExtResource( 18 )
+texture_progress = ExtResource( 19 )
+tint_progress = Color( 0.968627, 0.952941, 0.717647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Weapon" type="Sprite" parent="."]
+position = Vector2( 34.9854, 35.7005 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="Ammo" type="Control" parent="."]
+margin_left = -5.82705
+margin_top = 10.3298
+margin_right = -5.82705
+margin_bottom = 10.3298
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ammo1" type="AnimatedSprite" parent="Ammo"]
+position = Vector2( 70, 42 )
+frames = SubResource( 1 )
+animation = "use"
+frame = 4
+playing = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ammo/Ammo1"]
+anims/reload = SubResource( 2 )
+anims/use = SubResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="Ammo/Ammo1"]
+show_behind_parent = true
+material = SubResource( 4 )
+amount = 4
+lifetime = 0.5
+fract_delta = false
+process_material = SubResource( 9 )
+texture = ExtResource( 16 )
+
+[node name="Ammo2" type="AnimatedSprite" parent="Ammo"]
+position = Vector2( 95, 20 )
+frames = SubResource( 1 )
+animation = "use"
+frame = 4
+playing = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ammo/Ammo2"]
+anims/reload = SubResource( 10 )
+anims/use = SubResource( 11 )
+
+[node name="Particles2D" type="Particles2D" parent="Ammo/Ammo2"]
+show_behind_parent = true
+material = SubResource( 4 )
+amount = 4
+lifetime = 0.5
+fract_delta = false
+process_material = SubResource( 9 )
+texture = ExtResource( 16 )
+
+[node name="Ammo3" type="AnimatedSprite" parent="Ammo"]
+position = Vector2( 120, 42 )
+frames = SubResource( 1 )
+animation = "use"
+frame = 4
+playing = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ammo/Ammo3"]
+anims/reload = SubResource( 12 )
+anims/use = SubResource( 13 )
+
+[node name="Particles2D" type="Particles2D" parent="Ammo/Ammo3"]
+show_behind_parent = true
+material = SubResource( 4 )
+amount = 4
+lifetime = 0.5
+fract_delta = false
+process_material = SubResource( 9 )
+texture = ExtResource( 16 )
+
+[node name="Ammo4" type="AnimatedSprite" parent="Ammo"]
+position = Vector2( 145, 20 )
+frames = SubResource( 1 )
+animation = "use"
+frame = 4
+playing = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ammo/Ammo4"]
+anims/reload = SubResource( 14 )
+anims/use = SubResource( 15 )
+
+[node name="Particles2D" type="Particles2D" parent="Ammo/Ammo4"]
+show_behind_parent = true
+material = SubResource( 4 )
+amount = 4
+lifetime = 0.5
+fract_delta = false
+process_material = SubResource( 9 )
+texture = ExtResource( 16 )
+
+[node name="Ammo5" type="AnimatedSprite" parent="Ammo"]
+position = Vector2( 170, 42 )
+frames = SubResource( 1 )
+animation = "use"
+frame = 4
+playing = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ammo/Ammo5"]
+anims/reload = SubResource( 16 )
+anims/use = SubResource( 17 )
+
+[node name="Particles2D" type="Particles2D" parent="Ammo/Ammo5"]
+show_behind_parent = true
+material = SubResource( 4 )
+amount = 4
+lifetime = 0.5
+fract_delta = false
+process_material = SubResource( 9 )
+texture = ExtResource( 16 )
+
+[node name="Ammo6" type="AnimatedSprite" parent="Ammo"]
+position = Vector2( 195, 20 )
+frames = SubResource( 1 )
+animation = "use"
+frame = 4
+playing = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ammo/Ammo6"]
+anims/reload = SubResource( 18 )
+anims/use = SubResource( 19 )
+
+[node name="Particles2D" type="Particles2D" parent="Ammo/Ammo6"]
+show_behind_parent = true
+material = SubResource( 4 )
+amount = 4
+lifetime = 0.5
+fract_delta = false
+process_material = SubResource( 9 )
+texture = ExtResource( 16 )
+
+[node name="InstantReloadParticles" type="Particles2D" parent="."]
+material = SubResource( 20 )
+position = Vector2( 15.749, 36.5377 )
+emitting = false
+amount = 20
+lifetime = 0.25
+one_shot = true
+fract_delta = false
+process_material = SubResource( 25 )
+texture = ExtResource( 20 )
