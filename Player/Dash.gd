@@ -7,6 +7,7 @@ onready var recovery = $Recovery
 
 var dash : Vector2 #Used to store dash vector
 var start: Vector2 #Used to store starting location
+var end : Vector2  #Used to store desired ending location
 
 # Upon entering the state, we disable the player's collision, 
 # perform the dash based on the current melee weapon, calculate the vector dashed,
@@ -22,11 +23,13 @@ func Enter(_msg := {}) -> void:
 	# Start wait timer
 	start = owner.global_position
 	ready.start(owner.currentMeleeWeapon.dashStartTime)
-	owner.currentMeleeWeapon.dashStart.emitting = true
+	
+	owner.currentMeleeWeapon.DashStartEffect(true)
+	end = owner.globalMousePos
 
 func _on_Ready_timeout():
 	# Dash
-	dash = owner.globalMousePos - owner.global_position;
+	dash = end - owner.global_position;
 	if(dash.length_squared()>owner.currentMeleeWeapon.GetDashDistanceSquared()):
 		dash = dash.normalized()*owner.currentMeleeWeapon.GetDashDistance()
 	owner.move_and_collide(dash)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/over.png-dda050153e2b57d5d93f7f8a6734597c.stex"
+path="res://.import/streak0002.png-313e587d39aa9453eadd5879a5310080.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/GUI/Dash/over.png"
-dest_files=[ "res://.import/over.png-dda050153e2b57d5d93f7f8a6734597c.stex" ]
+source_file="res://Player/Weapons/Greatsword/streak0002.png"
+dest_files=[ "res://.import/streak0002.png-313e587d39aa9453eadd5879a5310080.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

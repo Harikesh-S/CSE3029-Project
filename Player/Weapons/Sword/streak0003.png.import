@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/over.png-dda050153e2b57d5d93f7f8a6734597c.stex"
+path="res://.import/streak0003.png-07e15f0a6bfc11b8a999f8a3e3bbc205.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/GUI/Dash/over.png"
-dest_files=[ "res://.import/over.png-dda050153e2b57d5d93f7f8a6734597c.stex" ]
+source_file="res://Player/Weapons/Sword/streak0003.png"
+dest_files=[ "res://.import/streak0003.png-07e15f0a6bfc11b8a999f8a3e3bbc205.stex" ]
 
 [params]
 

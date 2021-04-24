@@ -13,11 +13,16 @@ var xAxis = Vector2(1,0)
 onready var barrelEnd = $Weapon/End
 onready var weapon = $Weapon
 onready var nextShot = $NextShot
+onready var reloadTimer = $ReloadTimer
 # Minimum distance of input from the weapon
 onready var minDist = (barrelEnd.position.x*5)
 onready var minDistSq = pow(minDist,2)
+# Ammo
+onready var maxAmmo = 6
+onready var ammo = 6
 # preloading bullet
 var bulletRes = preload("res://Player/Weapons/Pistol/Bullet.tscn")
+
 
 func UpdatePosition(globalMousePos: Vector2) -> void:
 	# X axis flip
@@ -46,9 +51,25 @@ func GetIndex(quadrantIndex : int) -> int:
 func ReadyToShoot() -> bool:
 	if(nextShot.time_left>0):
 		return false
+	if(ammo<=0):
+		return false
 	return true
-	
+
+func Reload() -> void:
+	if(reloadTimer.time_left>0):
+		return
+	if(ammo == maxAmmo):
+		return
+	reloadTimer.start()
+
+func CancelReload() -> void:
+	reloadTimer.stop()
+
+func ReloadComplete() -> void:
+	ammo = maxAmmo
+
 func Shoot(globalMousePos: Vector2) -> Bullet:
+	ammo -= 1
 	nextShot.start()
 	var bullet = bulletRes.instance()
 	bullet.global_position = barrelEnd.global_position

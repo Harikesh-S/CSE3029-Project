@@ -8,6 +8,9 @@ var type = "ED"
 const COLORS = {
 	"ED":Color("f7f3b7"),	# Enemy damage
 	"EDC":Color("ec273f"),	# Enemy damage crit
+	"PD":Color("e98537"),	#Player damage
+	"PDC":Color("ec273f"),	#Player damage crit
+	"PH":Color("5ab552"),	#Player heal
 }
 
 func _ready():

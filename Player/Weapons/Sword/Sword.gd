@@ -10,6 +10,15 @@ var streakRes = preload("res://Player/Weapons/Sword/DashStreak.tscn")
 onready var dashReady = $DashReady
 onready var dashStart = $DashStart
 
+func DashReadyEffect(state) -> void:
+	if(state):
+		dashReady.show()
+	else:
+		dashReady.hide()
+
+func DashStartEffect(state) -> void:
+	dashStart.emitting = state
+
 func _ready():
 	dashStartTime = 0.2
 	dashEndTime = 0.2
@@ -36,12 +45,12 @@ func GetDamage():
 func GetColor() -> Color:
 	return Color("#6dead6")
 
-func GetDashMax() -> int:
+func GetMaxDash() -> int:
 	return 5
 
-func GetDashStreak(startPos : Vector2, endPos : Vector2, mousePos : Vector2):
+func GetDashStreak(startPos : Vector2, endPos : Vector2):
 	var streak = streakRes.instance()
 	streak.startPos = startPos
 	streak.endPos = endPos
-	streak.mousePos = mousePos
+	streak.time = self.dashEndTime
 	return streak

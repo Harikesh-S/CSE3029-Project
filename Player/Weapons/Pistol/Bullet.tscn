@@ -1,8 +1,8 @@
 [gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player/Weapons/Pistol/bullet0001.png" type="Texture" id=1]
+[ext_resource path="res://Other Resources/light1.png" type="Texture" id=2]
 [ext_resource path="res://Player/Weapons/Pistol/Bullet.gd" type="Script" id=3]
-[ext_resource path="res://Other Resources/light.png" type="Texture" id=4]
 [ext_resource path="res://Particles/floaty_32.png" type="Texture" id=5]
 [ext_resource path="res://Player/Weapons/Pistol/bullet0003.png" type="Texture" id=6]
 [ext_resource path="res://Player/Weapons/Pistol/bullet0002.png" type="Texture" id=7]
@@ -31,7 +31,7 @@ animations = [ {
 extents = Vector2( 7.95995, 5.78785 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 6.45826, 3.95244 )
+extents = Vector2( 2.91221, 1.48887 )
 
 [sub_resource type="CanvasItemMaterial" id=4]
 blend_mode = 1
@@ -100,7 +100,7 @@ script = ExtResource( 3 )
 light_mask = 2
 z_index = 1
 frames = SubResource( 1 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -118,11 +118,12 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Light2D" type="Light2D" parent="."]
-texture = ExtResource( 4 )
+texture = ExtResource( 2 )
 texture_scale = 0.25
 color = Color( 0.952941, 0.658824, 0.2, 1 )
 energy = 0.5
 range_item_cull_mask = 3
+shadow_enabled = true
 
 [node name="TrailParticles" type="Particles2D" parent="."]
 material = SubResource( 4 )

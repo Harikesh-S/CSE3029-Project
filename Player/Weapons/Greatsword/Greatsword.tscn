@@ -43,7 +43,6 @@ z_as_relative = false
 texture = ExtResource( 2 )
 
 [node name="DashReady" type="Sprite" parent="."]
-visible = false
 material = SubResource( 1 )
 position = Vector2( -9.26031, -20.6252 )
 z_index = 1

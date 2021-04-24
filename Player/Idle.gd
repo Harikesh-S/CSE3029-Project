@@ -12,6 +12,8 @@ func Enter(_msg := {}) -> void:
 func Update(delta: float) -> void:
 	if Input.is_action_pressed("shoot"):
 		owner.ShootWeapon()
+	if Input.is_action_pressed("reload"):
+		owner.ReloadWeapon()
 	if Input.is_action_just_pressed("dash"):
 		if(owner.CanDash()):
 			stateMachine.TransitionTo("Dash")

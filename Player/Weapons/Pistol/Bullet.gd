@@ -16,7 +16,7 @@ func hit() -> void:
 	$Area2D.set_block_signals(true)
 	$TrailParticles.emitting = false
 	$ImpactParticles.emitting = true
-	$Light2D.energy *= 2
+	$Light2D.energy *= 1.25
 	$Sprite.play("death")
 	$Timer.start()
 	$Timer.connect("timeout",self,"destroy")

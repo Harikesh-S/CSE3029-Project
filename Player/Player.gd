@@ -3,6 +3,9 @@ extends KinematicBody2D
 # signals
 signal health_updated(healthRatio)
 signal dash_updated(dashRatio)
+signal dash_changed(color)
+signal weapon_updated()
+signal weapon_changed(weaponUIName)
 
 # Movement velocity
 var velocity = Vector2(0,0)
@@ -24,9 +27,11 @@ var currentRangedWeapon
 # Health
 export var maxHealth = 100.0
 onready var health = maxHealth
+# Floating text for health changes
+var floatingTextRes = preload("res://Scenes/FloatingText.tscn")
 
-# Dash status parameters (dashCount/dashMax %)
-var dashMax
+# Dash status parameters (dashCount/MaxDash %)
+var maxDash
 var dashCount
 
 func _ready():
@@ -39,10 +44,11 @@ func _ready():
 
 func UpdateMeleeWeapon():
 	currentMeleeWeapon = meleeWeapons[meleeWeaponId]
-	dashMax = currentMeleeWeapon.GetDashMax()
+	maxDash = currentMeleeWeapon.GetMaxDash()
 	currentMeleeWeapon.show()
 	dashCount = 0
-	currentMeleeWeapon.dashReady.hide()
+	currentMeleeWeapon.DashReadyEffect(false)
+	emit_signal("dash_changed",currentMeleeWeapon.GetColor())
 	emit_signal("dash_updated",0)
 
 func UpdateRangedWeapon():
@@ -77,35 +83,61 @@ func _process(delta):
 func _physics_process(delta):
 	move_and_slide(velocity)
 
+func ReloadWeapon():
+	currentRangedWeapon.Reload()
+	emit_signal("weapon_updated")
+
 func ShootWeapon():
 	if(currentRangedWeapon.ReadyToShoot()):
+		currentRangedWeapon.CancelReload()
 		var bullet = currentRangedWeapon.Shoot(get_global_mouse_position())
 		get_parent().add_child(bullet)
 		bullet.connect("hit_enemy",self,"IncrementDash")
-		self.OnHit(10)
+		emit_signal("weapon_updated")
 
 func Streak(start):
+	currentRangedWeapon.CancelReload()
+	emit_signal("weapon_updated")
 	dashCount = 0
-	get_parent().add_child(currentMeleeWeapon.GetDashStreak(start,global_position,globalMousePos))
-	currentMeleeWeapon.dashReady.hide()
+	get_parent().add_child(currentMeleeWeapon.GetDashStreak(start,global_position))
+	currentMeleeWeapon.DashReadyEffect(false)
 	emit_signal("dash_updated",0)
 
 func CanDash():
-	if(dashCount>=dashMax):
+	if(dashCount>=maxDash):
 		return true
 	return false
 
 func IncrementDash(amount):
-	if(dashCount<dashMax):
+	if(dashCount<maxDash):
 		dashCount+=amount
-		emit_signal("dash_updated",float(dashCount)/float(dashMax))
-		if(dashCount>=dashMax):
-			currentMeleeWeapon.dashReady.show()
+		emit_signal("dash_updated",float(dashCount)/float(maxDash))
+		if(dashCount>=maxDash):
+			currentMeleeWeapon.DashReadyEffect(true)
 
-func OnHit(amount):
-	health -= amount
+func OnHit(damage):
+	var floatingText = floatingTextRes.instance()
+	floatingText.amount = damage[0]
+	if(damage[1]):
+		floatingText.type = "PDC"	# Player damage crit
+	else:
+		floatingText.type = "PD"	# Player damage
+	add_child(floatingText)
+	health -= damage[0]
+	if(health<0):
+		health = 0
 	emit_signal("health_updated",(health/maxHealth))
-
+	
+func OnHeal(amount):
+	var floatingText = floatingTextRes.instance()
+	floatingText.amount = amount
+	floatingText.type = "PH"	# Player heal
+	add_child(floatingText)
+	health += amount
+	if(health>maxHealth):
+		health=maxHealth
+	emit_signal("health_updated",(health/maxHealth))
+	
 class Sorter:
 	# Used to sort body parts based on index
 	static func SortParts(a, b):

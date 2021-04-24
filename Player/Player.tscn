@@ -10,18 +10,17 @@
 [ext_resource path="res://Player/Walk.gd" type="Script" id=8]
 [ext_resource path="res://Player/Weapons/Pistol/Pistol.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player/Weapons/Sword/Sword.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Other Resources/light.png" type="Texture" id=11]
+[ext_resource path="res://Other Resources/light1.png" type="Texture" id=11]
 [ext_resource path="res://Player/Dash.gd" type="Script" id=12]
 [ext_resource path="res://Player/Weapons/Greatsword/Greatsword.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.9499, 5.68749 )
 
-[sub_resource type="OccluderPolygon2D" id=8]
+[sub_resource type="OccluderPolygon2D" id=2]
 polygon = PoolVector2Array( -9.9774, 5.93972, 10.2391, 5.93972, 8.90126, 13.9669, -8.78819, 13.8182 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "Left"
+[sub_resource type="Animation" id=3]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -61,8 +60,7 @@ tracks/2/keys = {
 "values": [ Vector2( 6.502, 5 ), Vector2( 6.502, 5 ), Vector2( 6.502, 6 ), Vector2( 6.502, 6 ), Vector2( 6.502, 5 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Left-Back"
+[sub_resource type="Animation" id=4]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -102,7 +100,7 @@ tracks/2/keys = {
 "values": [ Vector2( 6.502, 5 ), Vector2( 6.502, 5 ), Vector2( 6.502, 6 ), Vector2( 6.502, 6 ), Vector2( 6.502, 5 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -142,7 +140,7 @@ tracks/2/keys = {
 "values": [ Vector2( 6.502, 5 ), Vector2( 6.502, 5 ), Vector2( 6.502, 6 ), Vector2( 6.502, 6 ), Vector2( 6.502, 5 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -182,8 +180,7 @@ tracks/2/keys = {
 "values": [ Vector2( 6.502, 5 ), Vector2( 6.502, 5 ), Vector2( 6.502, 6 ), Vector2( 6.502, 6 ), Vector2( 6.502, 5 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Idle"
+[sub_resource type="Animation" id=7]
 step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Parts/Body/Legs:frame")
@@ -198,8 +195,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "Walk"
+[sub_resource type="Animation" id=8]
 length = 2.2
 loop = true
 step = 0.2
@@ -216,7 +212,9 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1, 0, 3, 4, 3, 0 ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
 z_as_relative = false
 collision_layer = 2
 collision_mask = 7
@@ -229,26 +227,26 @@ shape = SubResource( 1 )
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 0, 3.44589 )
 texture = ExtResource( 11 )
-texture_scale = 0.25
+texture_scale = 0.5
+energy = 0.75
 range_item_cull_mask = 3
 shadow_enabled = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
 light_mask = 2
-occluder = SubResource( 8 )
+occluder = SubResource( 2 )
 light_mask = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Left = SubResource( 2 )
-anims/Left-Back = SubResource( 3 )
-anims/Right = SubResource( 4 )
-anims/Right-Back = SubResource( 5 )
+anims/Left = SubResource( 3 )
+anims/Left-Back = SubResource( 4 )
+anims/Right = SubResource( 5 )
+anims/Right-Back = SubResource( 6 )
 
 [node name="LegsAnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/Idle = SubResource( 6 )
-anims/Walk = SubResource( 7 )
+anims/Idle = SubResource( 7 )
+anims/Walk = SubResource( 8 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 6 )

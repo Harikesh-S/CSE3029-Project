@@ -4,11 +4,20 @@ extends WeaponMelee
 export var rotation = [0,0,0,0]
 export var flip = [1,-1,1,-1]
 export var relIndex = [-3,-3,3,3]
+onready var scaleX = self.scale.x
 # Dash streak resource
 var streakRes = preload("res://Player/Weapons/Greatsword/DashStreak.tscn")
 onready var dashReady = $DashReady
 onready var dashStart = $DashStart
-onready var scaleX = self.scale.x
+
+func DashReadyEffect(state) -> void:
+	if(state):
+		dashReady.show()
+	else:
+		dashReady.hide()
+
+func DashStartEffect(state) -> void:
+	dashStart.emitting = state
 
 func _ready():
 	dashStartTime = 0.5
@@ -33,12 +42,12 @@ func GetDashDistanceSquared() -> int:
 func GetColor() -> Color:
 	return Color("#ec273f")
 
-func GetDashMax() -> int:
+func GetMaxDash() -> int:
 	return 8
 
-func GetDashStreak(startPos : Vector2, endPos : Vector2, mousePos : Vector2):
+func GetDashStreak(startPos : Vector2, endPos : Vector2):
 	var streak = streakRes.instance()
 	streak.startPos = startPos
 	streak.endPos = endPos
-	streak.mousePos = mousePos
+	streak.time = self.dashEndTime
 	return streak
