@@ -5,16 +5,27 @@ var testRes = preload("res://Test.tscn")
 func _ready():
 	Reset()
 	Resolution()
+# warning-ignore:return_value_discarded
 	$CanvasLayer/VBoxContainer/Button.connect("pressed", self, "Fullscreen")
+# warning-ignore:return_value_discarded
 	$CanvasLayer/VBoxContainer/Button2.connect("pressed", self, "Resolution")
+# warning-ignore:return_value_discarded
 	$CanvasLayer/VBoxContainer/Button3.connect("pressed", self, "Heal")
+# warning-ignore:return_value_discarded
 	$CanvasLayer/VBoxContainer/Button4.connect("pressed", self, "Damage")
+# warning-ignore:return_value_discarded
 	$CanvasLayer/VBoxContainer/Button6.connect("pressed", self, "DamageCrit")
+# warning-ignore:return_value_discarded
 	$CanvasLayer/VBoxContainer/Button5.connect("pressed", self, "Reset")
 
-func _process(delta):
+func _process(_delta):
 	if(Input.is_action_just_pressed("debug")):
 		$CanvasLayer/VBoxContainer.visible = !$CanvasLayer/VBoxContainer.visible
+		$CanvasLayer/VBoxContainer2.visible = !$CanvasLayer/VBoxContainer2.visible
+
+func _physics_process(_delta):
+	$CanvasLayer/VBoxContainer2/Label.text = "FPS: " + str(Performance.get_monitor(Performance.TIME_FPS))
+	$CanvasLayer/VBoxContainer2/Label2.text = "Memory Static: " + str(round(Performance.get_monitor(Performance.MEMORY_STATIC)/1024/1024)) + " MB"
 
 func ClearScreen():
 	for child in $Node2D.get_children():

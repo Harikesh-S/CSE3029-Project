@@ -26,8 +26,8 @@ func AnimationFinished(animationName : String):
 
 func Die():
 	animationPlayer.play("Death")
-	$CollisionShape2D.disabled = true
-	$Area2D/CollisionShape2D.disabled = true
+	$CollisionShape2D.set_deferred("disabled",true)
+	$Area2D/CollisionShape2D.set_deferred("disabled",true)
 	alive = false
 
 func OnHit(damage) -> void:

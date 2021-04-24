@@ -23,7 +23,7 @@ func GetDashDistanceSquared() -> int:
 	return 0
 
 # Virtual function to create and return a dash streak
-func GetDashStreak(startPos : Vector2, endPos : Vector2):
+func GetDashStreak(_startPos : Vector2, _endPos : Vector2):
 	return null
 
 # Virtual function to get dash max (recharge)
@@ -36,10 +36,10 @@ func GetColor() -> Color:
 
 
 # Virtual functions to show effects (ready and just before dash)
-func DashReadyEffect(state) -> void:
+func DashReadyEffect(_state) -> void:
 	pass
 
-func DashStartEffect(state) -> void:
+func DashStartEffect(_state) -> void:
 	pass
 
 # Virtual function. Corresponds to the `_process()` callback.

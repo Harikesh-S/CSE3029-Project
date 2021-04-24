@@ -2,25 +2,29 @@
 class_name Bullet
 extends KinematicBody2D
 
+# warning-ignore:unused_signal
 signal hit_enemy(amount)
 
-var velocity
+var velocity : Vector2
+var mousePos : Vector2
 
-func destroy() -> void:
+func Destroy() -> void:
 	queue_free()
 
-func hit() -> void:
+func Hit() -> void:
 	pass
 
 func SetDirection(dir : Vector2,globalMousePos : Vector2) -> void:
 	velocity = dir*GetSpeed()
-	look_at(globalMousePos)
+	mousePos = globalMousePos
 
 func GetSpeed() -> int:
 	return 0
 
-# Corresponds to the `_physics_process()` callback.
+func _ready():
+	look_at(mousePos)
+
 func _physics_process(delta: float) -> void:
 	# Move and detect collisions
 	if(move_and_collide(velocity*delta)):
-		hit()
+		Hit()

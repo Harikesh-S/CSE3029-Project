@@ -45,5 +45,5 @@ func _on_Recovery_timeout():
 	stateMachine.TransitionTo("Idle")
 
 
-func Update(delta: float) -> void:
+func Update(_delta: float) -> void:
 	owner.velocity = Vector2.ZERO

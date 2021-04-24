@@ -25,13 +25,11 @@ func _ready():
 	color.a = 0
 	tween.interpolate_property(self,'modulate',null,color,time,Tween.TRANS_LINEAR,Tween.EASE_OUT)
 	tween.interpolate_property($Light2D,'energy',null,0,time,Tween.TRANS_LINEAR,Tween.EASE_OUT)
-	print(tween.start())
+	tween.start()
 	# Connect signals
 	tween.connect("tween_all_completed",self,"Destroy")
 	area2D.connect("area_entered",self,"AreaEntered")
-	
-	
 
 # Function to affect enemies in the dash area
-func AreaEntered(area : Area2D) -> void:
+func AreaEntered(_area : Area2D) -> void:
 	pass

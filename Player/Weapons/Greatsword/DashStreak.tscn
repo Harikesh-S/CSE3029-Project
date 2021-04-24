@@ -3,10 +3,11 @@
 [ext_resource path="res://Player/Weapons/Greatsword/DashStreak.gd" type="Script" id=1]
 [ext_resource path="res://Particles/floaty_32.png" type="Texture" id=2]
 [ext_resource path="res://Other Resources/light1.png" type="Texture" id=3]
-[ext_resource path="res://Player/Weapons/Greatsword/streak0000.png" type="Texture" id=4]
-[ext_resource path="res://Player/Weapons/Greatsword/streak0001.png" type="Texture" id=5]
-[ext_resource path="res://Player/Weapons/Greatsword/streak0003.png" type="Texture" id=6]
-[ext_resource path="res://Player/Weapons/Greatsword/streak0002.png" type="Texture" id=7]
+[ext_resource path="res://Player/Weapons/Greatsword/Sprites/streak0000.png" type="Texture" id=4]
+[ext_resource path="res://Player/Weapons/Greatsword/Sprites/streak0001.png" type="Texture" id=5]
+[ext_resource path="res://Player/Weapons/Greatsword/Sprites/streak0003.png" type="Texture" id=6]
+[ext_resource path="res://Player/Weapons/Greatsword/Sprites/streak0002.png" type="Texture" id=7]
+
 
 [sub_resource type="CanvasItemMaterial" id=6]
 blend_mode = 1

@@ -1,0 +1,218 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Player/Weapons/WaveGun/Sprites/bullet0003.png" type="Texture" id=1]
+[ext_resource path="res://Other Resources/light1.png" type="Texture" id=2]
+[ext_resource path="res://Player/Weapons/WaveGun/Bullet.gd" type="Script" id=3]
+[ext_resource path="res://Player/Weapons/WaveGun/Sprites/bullet0000.png" type="Texture" id=4]
+[ext_resource path="res://Particles/floaty_32.png" type="Texture" id=5]
+[ext_resource path="res://Player/Weapons/WaveGun/Sprites/bullet0001.png" type="Texture" id=6]
+[ext_resource path="res://Player/Weapons/WaveGun/Sprites/bullet0002.png" type="Texture" id=7]
+[ext_resource path="res://Player/Weapons/WaveGun/Sprites/bulletExplosion0005.png" type="Texture" id=8]
+[ext_resource path="res://Player/Weapons/WaveGun/Sprites/bulletExplosion0002.png" type="Texture" id=9]
+[ext_resource path="res://Player/Weapons/WaveGun/Sprites/bulletExplosion0003.png" type="Texture" id=10]
+[ext_resource path="res://Player/Weapons/WaveGun/Sprites/bulletExplosion0006.png" type="Texture" id=11]
+[ext_resource path="res://Player/Weapons/WaveGun/Sprites/bulletExplosion0001.png" type="Texture" id=12]
+[ext_resource path="res://Player/Weapons/WaveGun/Sprites/bulletExplosion0000.png" type="Texture" id=13]
+[ext_resource path="res://Player/Weapons/WaveGun/Sprites/bulletExplosion0004.png" type="Texture" id=14]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "death",
+"speed": 40.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 11.0718
+height = 0.0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 3.56758, 7.50216 )
+
+[sub_resource type="CanvasItemMaterial" id=4]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0.0682927, 0.892683 )
+colors = PoolColorArray( 0.243137, 0.231373, 0.396078, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="Curve" id=13]
+_data = [ Vector2( 0, 0.617487 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=14]
+curve = SubResource( 13 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 10, 1 )
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 5.0
+gravity = Vector3( -100, 0, 0 )
+initial_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 70.8
+scale_curve = SubResource( 14 )
+color_ramp = SubResource( 6 )
+anim_speed = 1.0
+
+[sub_resource type="CanvasItemMaterial" id=8]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0.373874, 1 )
+colors = PoolColorArray( 0.243137, 0.231373, 0.396078, 1, 0.952941, 0.658824, 0.2, 1 )
+
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+flag_disable_z = true
+direction = Vector3( -10, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 379.31
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 10 )
+anim_speed = 1.0
+
+[sub_resource type="Animation" id=12]
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 3, 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Light2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "Destroy"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("TrailParticles:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Bullet" type="KinematicBody2D"]
+z_index = 1
+z_as_relative = false
+collision_layer = 0
+script = ExtResource( 3 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+light_mask = 2
+z_index = 1
+frames = SubResource( 1 )
+playing = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -4.09475, 0.236236 )
+rotation = -1.5708
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 2 )
+texture_scale = 0.25
+color = Color( 0.870588, 0.807843, 0.929412, 1 )
+range_item_cull_mask = 3
+shadow_enabled = true
+
+[node name="TrailParticles" type="Particles2D" parent="."]
+material = SubResource( 4 )
+position = Vector2( 7.9803, 0 )
+amount = 20
+lifetime = 0.5
+process_material = SubResource( 7 )
+texture = ExtResource( 5 )
+
+[node name="ImpactParticles" type="Particles2D" parent="."]
+material = SubResource( 8 )
+emitting = false
+amount = 10
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+process_material = SubResource( 11 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/waveGunBullet = SubResource( 12 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

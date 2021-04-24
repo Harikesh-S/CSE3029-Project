@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Other Resources/Facon.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Other Resources/karma future.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/FloatingText.gd" type="Script" id=2]
 
 [sub_resource type="CanvasItemMaterial" id=1]
@@ -8,8 +8,10 @@ light_mode = 1
 
 [sub_resource type="DynamicFont" id=2]
 size = 40
-outline_size = 1
+outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = 10
+extra_spacing_char = 1
 font_data = ExtResource( 1 )
 
 [node name="Text" type="Position2D"]
@@ -24,13 +26,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -50.0
-margin_top = -12.5
-margin_right = 50.0
-margin_bottom = 12.5
+margin_left = -124.5
+margin_top = -29.5
+margin_right = 124.5
+margin_bottom = 29.5
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 1, 0.0705882, 0.0705882, 1 )
-text = "200"
+text = "1234567890"
 align = 1
 valign = 1
 __meta__ = {

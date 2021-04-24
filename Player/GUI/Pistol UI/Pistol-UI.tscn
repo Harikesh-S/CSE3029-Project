@@ -1,24 +1,23 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Player/GUI/Pistol UI/Pistol-UI.gd" type="Script" id=1]
-[ext_resource path="res://Player/GUI/Pistol UI/ammoUse0002.png" type="Texture" id=2]
-[ext_resource path="res://Player/GUI/Pistol UI/ammoReload0001.png" type="Texture" id=3]
-[ext_resource path="res://Player/GUI/Pistol UI/ammoReload0002.png" type="Texture" id=4]
-[ext_resource path="res://Player/Weapons/Pistol/pistol.png" type="Texture" id=5]
-[ext_resource path="res://Player/GUI/Pistol UI/ammoUse0003.png" type="Texture" id=6]
-[ext_resource path="res://Player/GUI/Pistol UI/ammoUse0004.png" type="Texture" id=7]
-[ext_resource path="res://Player/GUI/Pistol UI/ammoReload0000.png" type="Texture" id=8]
-[ext_resource path="res://Player/GUI/Pistol UI/ammoIdle0001.png" type="Texture" id=9]
-[ext_resource path="res://Player/GUI/Pistol UI/ammoIdle0000.png" type="Texture" id=10]
-[ext_resource path="res://Player/GUI/Pistol UI/ammoUse0000.png" type="Texture" id=11]
-[ext_resource path="res://Player/GUI/Pistol UI/ammoUse0001.png" type="Texture" id=12]
-[ext_resource path="res://Player/GUI/Pistol UI/ammoIdle0003.png" type="Texture" id=13]
-[ext_resource path="res://Player/GUI/Pistol UI/ammoIdle0002.png" type="Texture" id=14]
-[ext_resource path="res://Player/GUI/Pistol UI/ammoReload0003.png" type="Texture" id=15]
-[ext_resource path="res://Particles/random_selection.png" type="Texture" id=16]
-[ext_resource path="res://Player/GUI/Pistol UI/reloadUnder.png" type="Texture" id=17]
-[ext_resource path="res://Player/GUI/Pistol UI/reloadOver.png" type="Texture" id=18]
-[ext_resource path="res://Player/GUI/Pistol UI/reloadProgress.png" type="Texture" id=19]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/ammoUse0002.png" type="Texture" id=2]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/ammoReload0001.png" type="Texture" id=3]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/ammoReload0002.png" type="Texture" id=4]
+[ext_resource path="res://Player/Weapons/Pistol/Sprites/pistol.png" type="Texture" id=5]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/ammoUse0003.png" type="Texture" id=6]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/ammoUse0004.png" type="Texture" id=7]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/ammoReload0000.png" type="Texture" id=8]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/ammoIdle0001.png" type="Texture" id=9]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/ammoIdle0000.png" type="Texture" id=10]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/ammoUse0000.png" type="Texture" id=11]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/ammoUse0001.png" type="Texture" id=12]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/ammoIdle0003.png" type="Texture" id=13]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/ammoIdle0002.png" type="Texture" id=14]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/ammoReload0003.png" type="Texture" id=15]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/reloadUnder.png" type="Texture" id=17]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/reloadOver.png" type="Texture" id=18]
+[ext_resource path="res://Player/GUI/Pistol UI/Sprites/reloadProgress.png" type="Texture" id=19]
 [ext_resource path="res://Particles/spotlight_8.png" type="Texture" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -105,10 +104,6 @@ tracks/1/keys = {
 [sub_resource type="CanvasItemMaterial" id=4]
 blend_mode = 1
 light_mode = 1
-particles_animation = true
-particles_anim_h_frames = 3
-particles_anim_v_frames = 1
-particles_anim_loop = false
 
 [sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0.481982, 0.959459 )
@@ -124,21 +119,16 @@ _data = [ Vector2( 0.0244898, 0.118182 ), 0.0, 0.285547, 0, 0, Vector2( 0.97551,
 curve = SubResource( 7 )
 
 [sub_resource type="ParticlesMaterial" id=9]
+emission_shape = 1
+emission_sphere_radius = 14.78
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
-spread = 44.19
+spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-angular_velocity = 10.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-angle = 360.0
-angle_random = 1.0
-scale = 0.2
 scale_curve = SubResource( 8 )
 color_ramp = SubResource( 6 )
-anim_speed = 1.0
-anim_offset = 1.0
-anim_offset_random = 1.0
 
 [sub_resource type="Animation" id=10]
 resource_name = "reload"
@@ -542,11 +532,11 @@ anims/use = SubResource( 3 )
 [node name="Particles2D" type="Particles2D" parent="Ammo/Ammo1"]
 show_behind_parent = true
 material = SubResource( 4 )
-amount = 4
-lifetime = 0.5
+amount = 5
+lifetime = 0.25
 fract_delta = false
 process_material = SubResource( 9 )
-texture = ExtResource( 16 )
+texture = ExtResource( 20 )
 
 [node name="Ammo2" type="AnimatedSprite" parent="Ammo"]
 position = Vector2( 95, 20 )
@@ -565,11 +555,11 @@ anims/use = SubResource( 11 )
 [node name="Particles2D" type="Particles2D" parent="Ammo/Ammo2"]
 show_behind_parent = true
 material = SubResource( 4 )
-amount = 4
-lifetime = 0.5
+amount = 5
+lifetime = 0.25
 fract_delta = false
 process_material = SubResource( 9 )
-texture = ExtResource( 16 )
+texture = ExtResource( 20 )
 
 [node name="Ammo3" type="AnimatedSprite" parent="Ammo"]
 position = Vector2( 120, 42 )
@@ -588,11 +578,11 @@ anims/use = SubResource( 13 )
 [node name="Particles2D" type="Particles2D" parent="Ammo/Ammo3"]
 show_behind_parent = true
 material = SubResource( 4 )
-amount = 4
-lifetime = 0.5
+amount = 5
+lifetime = 0.25
 fract_delta = false
 process_material = SubResource( 9 )
-texture = ExtResource( 16 )
+texture = ExtResource( 20 )
 
 [node name="Ammo4" type="AnimatedSprite" parent="Ammo"]
 position = Vector2( 145, 20 )
@@ -611,11 +601,11 @@ anims/use = SubResource( 15 )
 [node name="Particles2D" type="Particles2D" parent="Ammo/Ammo4"]
 show_behind_parent = true
 material = SubResource( 4 )
-amount = 4
-lifetime = 0.5
+amount = 5
+lifetime = 0.25
 fract_delta = false
 process_material = SubResource( 9 )
-texture = ExtResource( 16 )
+texture = ExtResource( 20 )
 
 [node name="Ammo5" type="AnimatedSprite" parent="Ammo"]
 position = Vector2( 170, 42 )
@@ -634,11 +624,11 @@ anims/use = SubResource( 17 )
 [node name="Particles2D" type="Particles2D" parent="Ammo/Ammo5"]
 show_behind_parent = true
 material = SubResource( 4 )
-amount = 4
-lifetime = 0.5
+amount = 5
+lifetime = 0.25
 fract_delta = false
 process_material = SubResource( 9 )
-texture = ExtResource( 16 )
+texture = ExtResource( 20 )
 
 [node name="Ammo6" type="AnimatedSprite" parent="Ammo"]
 position = Vector2( 195, 20 )
@@ -657,11 +647,12 @@ anims/use = SubResource( 19 )
 [node name="Particles2D" type="Particles2D" parent="Ammo/Ammo6"]
 show_behind_parent = true
 material = SubResource( 4 )
-amount = 4
-lifetime = 0.5
+emitting = false
+amount = 5
+lifetime = 0.25
 fract_delta = false
 process_material = SubResource( 9 )
-texture = ExtResource( 16 )
+texture = ExtResource( 20 )
 
 [node name="InstantReloadParticles" type="Particles2D" parent="."]
 material = SubResource( 20 )

@@ -1,18 +1,20 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://Player/Weapons/Pistol/bullet0001.png" type="Texture" id=1]
+[ext_resource path="res://Player/Weapons/Pistol/Sprites/bullet0001.png" type="Texture" id=1]
 [ext_resource path="res://Other Resources/light1.png" type="Texture" id=2]
 [ext_resource path="res://Player/Weapons/Pistol/Bullet.gd" type="Script" id=3]
 [ext_resource path="res://Particles/floaty_32.png" type="Texture" id=5]
-[ext_resource path="res://Player/Weapons/Pistol/bullet0003.png" type="Texture" id=6]
-[ext_resource path="res://Player/Weapons/Pistol/bullet0002.png" type="Texture" id=7]
-[ext_resource path="res://Player/Weapons/Pistol/bullet0000.png" type="Texture" id=8]
-[ext_resource path="res://Player/Weapons/Pistol/bullet_explosion0001.png" type="Texture" id=9]
-[ext_resource path="res://Player/Weapons/Pistol/bullet_explosion0002.png" type="Texture" id=10]
-[ext_resource path="res://Player/Weapons/Pistol/bullet_explosion0000.png" type="Texture" id=11]
-[ext_resource path="res://Player/Weapons/Pistol/bullet_explosion0003.png" type="Texture" id=12]
-[ext_resource path="res://Player/Weapons/Pistol/bullet_explosion0005.png" type="Texture" id=13]
-[ext_resource path="res://Player/Weapons/Pistol/bullet_explosion0004.png" type="Texture" id=14]
+[ext_resource path="res://Player/Weapons/Pistol/Sprites/bullet0003.png" type="Texture" id=6]
+[ext_resource path="res://Player/Weapons/Pistol/Sprites/bullet0002.png" type="Texture" id=7]
+[ext_resource path="res://Player/Weapons/Pistol/Sprites/bullet0000.png" type="Texture" id=8]
+[ext_resource path="res://Player/Weapons/Pistol/Sprites/bullet_explosion0001.png" type="Texture" id=9]
+[ext_resource path="res://Player/Weapons/Pistol/Sprites/bullet_explosion0002.png" type="Texture" id=10]
+[ext_resource path="res://Player/Weapons/Pistol/Sprites/bullet_explosion0000.png" type="Texture" id=11]
+[ext_resource path="res://Player/Weapons/Pistol/Sprites/bullet_explosion0003.png" type="Texture" id=12]
+[ext_resource path="res://Player/Weapons/Pistol/Sprites/bullet_explosion0005.png" type="Texture" id=13]
+[ext_resource path="res://Player/Weapons/Pistol/Sprites/bullet_explosion0004.png" type="Texture" id=14]
+
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

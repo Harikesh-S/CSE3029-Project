@@ -49,6 +49,7 @@ func ChangeWeapon(weaponUI):
 		else:
 			child.hide()
 	currentWeaponUI.Start(player.currentRangedWeapon)
+	UpdateWeapon()
 
 func UpdateWeapon():
 	currentWeaponUI.Update()

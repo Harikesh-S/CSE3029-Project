@@ -5,6 +5,7 @@ signal health_updated(healthRatio)
 signal dash_updated(dashRatio)
 signal dash_changed(color)
 signal weapon_updated()
+# warning-ignore:unused_signal
 signal weapon_changed(weaponUIName)
 signal weapon_instant_reload()
 
@@ -18,7 +19,7 @@ var bodyAnimations = ["Right","Left","Right-Back","Left-Back"]
 # Variables for weapons
 export var availMeleeWeapons = ["Sword","Greatsword"]
 export var meleeWeaponId = 0
-export var availRangedWeapons = ["Pistol"]
+export var availRangedWeapons = ["Pistol","WaveGun"]
 export var rangedWeaponId = 0
 # References to weapons
 var meleeWeapons = []
@@ -43,29 +44,11 @@ func _ready():
 		rangedWeapons.append(get_node("Parts/Ranged Weapons/"+weapon))
 	UpdateRangedWeapon()
 
-func UpdateMeleeWeapon():
-	currentMeleeWeapon = meleeWeapons[meleeWeaponId]
-	maxDash = currentMeleeWeapon.GetMaxDash()
-	currentMeleeWeapon.show()
-	dashCount = 0
-	currentMeleeWeapon.DashReadyEffect(false)
-	emit_signal("dash_changed",currentMeleeWeapon.GetColor())
-	emit_signal("dash_updated",0)
+func _physics_process(_delta):
+# warning-ignore:return_value_discarded
+	move_and_slide(velocity)
 
-func UpdateRangedWeapon():
-	currentRangedWeapon = rangedWeapons[rangedWeaponId]
-	currentRangedWeapon.show()
-
-func ChangeMeleeWeapon():
-	if !($MeleeSwitchTimer.time_left>0):
-		currentMeleeWeapon.hide()
-		meleeWeaponId += 1
-		meleeWeaponId %= availMeleeWeapons.size()
-		UpdateMeleeWeapon()
-		# Force update the ordering of parts as melee weapons have different z ordering
-		UpdateBodyAnimation()
-
-func _process(delta):
+func _process(_delta):
 	# Update body and melee animation 
 	globalMousePos = get_global_mouse_position()
 	relativeMousePosition = globalMousePos-self.global_position
@@ -84,8 +67,38 @@ func _process(delta):
 	if currentRangedWeapon.ammo == 0:
 		ReloadWeapon()
 
-func _physics_process(delta):
-	move_and_slide(velocity)
+func UpdateMeleeWeapon():
+	currentMeleeWeapon = meleeWeapons[meleeWeaponId]
+	maxDash = currentMeleeWeapon.GetMaxDash()
+	currentMeleeWeapon.show()
+	dashCount = 0
+	currentMeleeWeapon.DashReadyEffect(false)
+	emit_signal("dash_changed",currentMeleeWeapon.GetColor())
+	emit_signal("dash_updated",0)
+
+func UpdateRangedWeapon():
+	currentRangedWeapon = rangedWeapons[rangedWeaponId]
+	currentRangedWeapon.show()
+	emit_signal("weapon_changed",currentRangedWeapon.GetUI())
+
+func ChangeMeleeWeapon():
+	if !($MeleeSwitchTimer.time_left>0):
+		currentMeleeWeapon.hide()
+		meleeWeaponId += 1
+		meleeWeaponId %= availMeleeWeapons.size()
+		UpdateMeleeWeapon()
+		# Force update the ordering of parts as melee weapons have different z ordering
+		UpdateBodyAnimation()
+
+func ChangeRangedWeapon():
+	if !($RangedSwitchTimer.time_left>0):
+		currentRangedWeapon.hide()
+		currentRangedWeapon.CancelReload()
+		rangedWeaponId += 1
+		rangedWeaponId %= availRangedWeapons.size()
+		UpdateRangedWeapon()
+		# Force update the ordering of parts as weapons have different z ordering
+		UpdateBodyAnimation()
 
 func InstantReload():
 	currentRangedWeapon.InstantReload()
@@ -167,7 +180,6 @@ func UpdateBodyAnimation():
 	bodyParts.append([$"Parts/Melee Weapons",handIndex + currentMeleeWeapon.GetIndex(quadrantIndex)])
 	bodyParts.append([$"Parts/Ranged Weapons",handIndex + currentRangedWeapon.GetIndex(quadrantIndex)])
 	bodyParts.sort_custom(Sorter,"SortParts")
-	$"Parts/Melee Weapons".get_index()
 	for i in range(bodyParts.size()):
 		if(bodyParts[i][0].get_index()!=i):
 			$Parts.move_child(bodyParts[i][0],i)
