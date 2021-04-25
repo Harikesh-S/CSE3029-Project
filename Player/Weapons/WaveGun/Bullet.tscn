@@ -49,13 +49,13 @@ colors = PoolColorArray( 0.243137, 0.231373, 0.396078, 1, 0, 0, 0, 1 )
 [sub_resource type="GradientTexture" id=6]
 gradient = SubResource( 5 )
 
-[sub_resource type="Curve" id=13]
+[sub_resource type="Curve" id=7]
 _data = [ Vector2( 0, 0.617487 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=14]
-curve = SubResource( 13 )
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=9]
 emission_shape = 2
 emission_box_extents = Vector3( 1, 10, 1 )
 flag_disable_z = true
@@ -66,25 +66,25 @@ initial_velocity = 100.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 70.8
-scale_curve = SubResource( 14 )
+scale_curve = SubResource( 8 )
 color_ramp = SubResource( 6 )
 anim_speed = 1.0
 
-[sub_resource type="CanvasItemMaterial" id=8]
+[sub_resource type="CanvasItemMaterial" id=10]
 blend_mode = 1
 particles_animation = true
 particles_anim_h_frames = 7
 particles_anim_v_frames = 7
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id=9]
+[sub_resource type="Gradient" id=11]
 offsets = PoolRealArray( 0.373874, 1 )
 colors = PoolColorArray( 0.243137, 0.231373, 0.396078, 1, 0.952941, 0.658824, 0.2, 1 )
 
-[sub_resource type="GradientTexture" id=10]
-gradient = SubResource( 9 )
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
 
-[sub_resource type="ParticlesMaterial" id=11]
+[sub_resource type="ParticlesMaterial" id=13]
 flag_disable_z = true
 direction = Vector3( -10, 0, 0 )
 spread = 180.0
@@ -93,10 +93,10 @@ initial_velocity = 379.31
 initial_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-color_ramp = SubResource( 10 )
+color_ramp = SubResource( 12 )
 anim_speed = 1.0
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=14]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -172,6 +172,7 @@ script = ExtResource( 3 )
 light_mask = 2
 z_index = 1
 frames = SubResource( 1 )
+frame = 2
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -199,20 +200,20 @@ material = SubResource( 4 )
 position = Vector2( 7.9803, 0 )
 amount = 20
 lifetime = 0.5
-process_material = SubResource( 7 )
+process_material = SubResource( 9 )
 texture = ExtResource( 5 )
 
 [node name="ImpactParticles" type="Particles2D" parent="."]
-material = SubResource( 8 )
+material = SubResource( 10 )
 emitting = false
 amount = 10
 lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
 fract_delta = false
-process_material = SubResource( 11 )
+process_material = SubResource( 13 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/waveGunBullet = SubResource( 12 )
+anims/waveGunBullet = SubResource( 14 )
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

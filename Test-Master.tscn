@@ -19,7 +19,7 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_right = 138.0
+margin_right = 137.0
 margin_bottom = 20.0
 toggle_mode = true
 text = "Fullscreen"
@@ -29,7 +29,7 @@ __meta__ = {
 
 [node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer"]
 margin_top = 24.0
-margin_right = 138.0
+margin_right = 137.0
 margin_bottom = 44.0
 toggle_mode = true
 pressed = true
@@ -38,41 +38,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button3" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_top = 48.0
-margin_right = 138.0
-margin_bottom = 68.0
-text = "Heal Player"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button4" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_top = 72.0
-margin_right = 138.0
-margin_bottom = 92.0
-text = "Damage Player"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button6" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_top = 96.0
-margin_right = 138.0
-margin_bottom = 116.0
-text = "Damage Player- Crit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Button5" type="Button" parent="CanvasLayer/VBoxContainer"]
-margin_top = 120.0
-margin_right = 138.0
-margin_bottom = 140.0
-text = "Reset"
+margin_top = 48.0
+margin_right = 137.0
+margin_bottom = 68.0
+text = "Reset level"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button7" type="Button" parent="CanvasLayer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 137.0
+margin_bottom = 92.0
+text = "Next Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button8" type="Button" parent="CanvasLayer/VBoxContainer"]
+margin_top = 96.0
+margin_right = 137.0
+margin_bottom = 116.0
+text = "Previous Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+margin_top = 120.0
+margin_right = 137.0
+margin_bottom = 134.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer"]
 visible = false

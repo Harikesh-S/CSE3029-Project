@@ -1,6 +1,9 @@
 extends Node2D
 
-var testRes = preload("res://Test.tscn")
+var levels = [preload("res://Test.tscn"),preload("res://Test-V2.tscn"),
+preload("res://Test-Defense.tscn"),preload("res://Test-Damage.tscn"),
+preload("res://Test-DashReset.tscn")]
+var currLevel = 0
 
 func _ready():
 	Reset()
@@ -10,13 +13,11 @@ func _ready():
 # warning-ignore:return_value_discarded
 	$CanvasLayer/VBoxContainer/Button2.connect("pressed", self, "Resolution")
 # warning-ignore:return_value_discarded
-	$CanvasLayer/VBoxContainer/Button3.connect("pressed", self, "Heal")
-# warning-ignore:return_value_discarded
-	$CanvasLayer/VBoxContainer/Button4.connect("pressed", self, "Damage")
-# warning-ignore:return_value_discarded
-	$CanvasLayer/VBoxContainer/Button6.connect("pressed", self, "DamageCrit")
-# warning-ignore:return_value_discarded
 	$CanvasLayer/VBoxContainer/Button5.connect("pressed", self, "Reset")
+# warning-ignore:return_value_discarded
+	$CanvasLayer/VBoxContainer/Button7.connect("pressed", self, "NextLevel")
+# warning-ignore:return_value_discarded
+	$CanvasLayer/VBoxContainer/Button8.connect("pressed", self, "PrevLevel")
 
 func _process(_delta):
 	if(Input.is_action_just_pressed("debug")):
@@ -32,10 +33,6 @@ func ClearScreen():
 		$Node2D.remove_child(child)
 		child.queue_free()
 
-func Test():
-	var test = testRes.instance()
-	$Node2D.add_child(test)
-
 func Fullscreen():
 	OS.window_fullscreen = !OS.window_fullscreen
 
@@ -50,12 +47,12 @@ func Resolution():
 func Damage():
 	var player = get_node("Node2D/Node2D/YSort/Player")
 	if(player):
-		player.OnHit([10,false])
+		player.OnHit([10,1,0,false])
 
 func DamageCrit():
 	var player = get_node("Node2D/Node2D/YSort/Player")
 	if(player):
-		player.OnHit([20,true])
+		player.OnHit([20,1,1,false])
 	
 func Heal():
 	var player = get_node("Node2D/Node2D/YSort/Player")
@@ -64,5 +61,23 @@ func Heal():
 	
 	
 func Reset():
+	$CanvasLayer/VBoxContainer/Label.text = "Level: "+str(currLevel+1) +"/"+str(levels.size())
 	ClearScreen()
-	Test()
+	LoadLevel()
+
+func NextLevel():
+	currLevel+=1
+	if(currLevel>=levels.size()):
+		currLevel = levels.size()-1
+	Reset()
+
+func PrevLevel():
+	currLevel-=1
+	if(currLevel<0):
+		currLevel = 0
+	Reset()
+	
+
+func LoadLevel():
+	var level = levels[currLevel].instance()
+	$Node2D.add_child(level)

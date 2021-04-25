@@ -1,10 +1,13 @@
 extends Bullet
 
-const DAMAGE = 10
-const DAMAGE_CRIT = 15
-const CRIT_RATE = 0.5 # Out of 1
+# Damage type : violet
+const DAMAGE_TYPE = 3
+# Damage gets multiplied by 1/current scale^2
+const DAMAGE = 80
+# This weapon cannot crit
 const SPEED = 250
-const DASH_RECHARGE = 1
+# Dash recharge is multiplied by 1/current scale^2
+const DASH_RECHARGE = 6
 
 func _ready():
 	$AnimationPlayer.play("waveGunBullet")
@@ -25,9 +28,10 @@ func GetSpeed() -> int:
 	return SPEED
 
 func _on_Area2D_area_entered(area):
-	if(rand_range(0, 1)<CRIT_RATE):
-		area.get_parent().OnHit([DAMAGE_CRIT,true,false])
-	else:
-		area.get_parent().OnHit([DAMAGE,false,false])
-	emit_signal("hit_enemy",DASH_RECHARGE)
-	#hit()
+	var inverseSquare = 1/pow(self.scale.x,2)
+	var damage = int(DAMAGE * inverseSquare)
+	var recharge = int(DASH_RECHARGE * inverseSquare)
+	if(recharge<1):
+		recharge = 1
+	area.get_parent().OnHit([damage,DAMAGE_TYPE,0,false])
+	emit_signal("hit_enemy",recharge)

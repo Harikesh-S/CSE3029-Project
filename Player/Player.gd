@@ -26,9 +26,10 @@ var meleeWeapons = []
 var currentMeleeWeapon
 var rangedWeapons = []
 var currentRangedWeapon
-# Health
+# Health and defenses
 export var maxHealth = 100.0
 onready var health = maxHealth
+export var def = [0.1,0.1,0.1,0.1]
 # Floating text for health changes
 var floatingTextRes = preload("res://Scenes/FloatingText.tscn")
 
@@ -138,14 +139,16 @@ func IncrementDash(amount):
 			currentMeleeWeapon.DashReadyEffect(true)
 
 func OnHit(damage):
+	# Damage calculation 
+	var amount = int(damage[0]*(1-def[damage[1]]))
+	
 	var floatingText = floatingTextRes.instance()
-	floatingText.amount = damage[0]
-	if(damage[1]):
-		floatingText.type = "PDC"	# Player damage crit
-	else:
-		floatingText.type = "PD"	# Player damage
+	floatingText.amount = amount
+	floatingText.type = damage[1] # Type
+	floatingText.crit = damage[2] # Crit
 	add_child(floatingText)
-	health -= damage[0]
+	
+	health -= amount
 	if(health<0):
 		health = 0
 	emit_signal("health_updated",(health/maxHealth))
@@ -153,7 +156,7 @@ func OnHit(damage):
 func OnHeal(amount):
 	var floatingText = floatingTextRes.instance()
 	floatingText.amount = amount
-	floatingText.type = "PH"	# Player heal
+	floatingText.type = 4
 	add_child(floatingText)
 	health += amount
 	if(health>maxHealth):

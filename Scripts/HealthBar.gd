@@ -6,7 +6,11 @@ onready var tween = $Tween
 onready var animation = $AnimationPlayer
 # Used to change the color of the bar
 const COLORS = [Color("26854c"),Color("f3a833"),Color("de5d3a"),Color("ec273f")]
+var borderColors = [Color(0,0,0),Color(1,1,1)]
 var endColor
+
+func _ready():
+	bar.set("tint_over",borderColors[0])
 
 func UpdateValue(ratio):
 	if(ratio>0.7):
@@ -26,10 +30,10 @@ func UpdateValue(ratio):
 	else:
 		# Taking damage
 		animation.play("shake")
-		tween.interpolate_property(bar,"tint_over",null,Color(1,1,1),0.1,Tween.TRANS_EXPO,Tween.EASE_OUT)
+		tween.interpolate_property(bar,"tint_over",null,borderColors[1],0.1,Tween.TRANS_EXPO,Tween.EASE_OUT)
 		tween.interpolate_property(bar,"value",null,value,0.1,Tween.TRANS_QUAD,Tween.EASE_OUT)
 		tween.interpolate_property(redBar,"value",null,value,0.5,Tween.TRANS_QUAD,Tween.EASE_OUT)
-	tween.interpolate_property(bar,"tint_over",null,Color(0,0,0),0.1,Tween.TRANS_EXPO,Tween.EASE_OUT,0.1)
+	tween.interpolate_property(bar,"tint_over",null,borderColors[0],0.1,Tween.TRANS_EXPO,Tween.EASE_OUT,0.1)
 	tween.interpolate_property(bar,"tint_progress",null,endColor,0.2,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	if(ratio<=0):
 		# Entity has died, remove health bar

@@ -13,7 +13,7 @@ onready var dashProgress = $Dash/TextureProgress
 onready var dashTween = $Dash/Tween
 
 func _ready():
-	
+	$Health/HealthBar.borderColors = [Color(1,1,1),Color(1,0,0)]
 	# Initial updates
 	UpdateHealth(float(player.health/player.maxHealth))
 	ChangeDash(player.currentMeleeWeapon.GetColor())
@@ -33,7 +33,7 @@ func UpdateHealth(ratio):
 
 func ChangeDash(color):
 	dashParticles.process_material.set("color",color)
-	dashProgress.tint_progress = color	
+	dashProgress.tint_progress = color
 
 func UpdateDash(ratio):
 	dashParticles.emitting = bool(ratio>=1)
