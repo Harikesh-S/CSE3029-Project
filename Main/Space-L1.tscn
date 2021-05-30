@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Main/Space-L1.gd" type="Script" id=1]
+
+[node name="Return-to-earth" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 21.9204
+margin_top = 47.3763
+margin_right = 627.92
+margin_bottom = 129.376
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 4.94975
+margin_top = 5.65686
+margin_right = 599.95
+margin_bottom = 70.6569
+text = "This will be the main scene for the space level, 
+probably have some way to pause but im gonna make that next (common for both space and 
+ground)
+The buttons just call functions to root check code"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Death" type="Button" parent="."]
+margin_left = 96.8739
+margin_top = 183.141
+margin_right = 146.874
+margin_bottom = 203.141
+text = "Death"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next" type="Button" parent="."]
+margin_left = 480.127
+margin_top = 174.656
+margin_right = 557.127
+margin_bottom = 194.656
+text = "Next level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="Death" to="." method="_on_Death_button_up"]
+[connection signal="button_up" from="Next" to="." method="_on_Next_button_up"]

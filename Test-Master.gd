@@ -76,7 +76,6 @@ func PrevLevel():
 	if(currLevel<0):
 		currLevel = 0
 	Reset()
-	
 
 func LoadLevel():
 	var level = levels[currLevel].instance()
