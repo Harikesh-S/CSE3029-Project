@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Other Resources/karma future.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.172549, 0.117647, 0.192157, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 1
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.243137, 0.231373, 0.396078, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+width = 1
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.695652 )
+colors = PoolColorArray( 0.0627451, 0.0705882, 0.109804, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+width = 1
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[node name="MenuButton" type="TextureButton"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 136.0
+margin_bottom = 54.0
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 5 )
+texture_hover = SubResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 4.94974
+margin_top = -3.53554
+margin_right = 129.95
+margin_bottom = 45.4645
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.952941, 0.717647, 1 )
+text = "Option"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top" type="ColorRect" parent="."]
+anchor_right = 1.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom" type="ColorRect" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="ColorRect" parent="."]
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.8147e-06
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="ColorRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

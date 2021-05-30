@@ -6,8 +6,8 @@ func _ready():
 
 
 func _on_Death_button_up():
-	get_node("../../").LoadLevelNo(5)
+	get_node("../../").LoadLevelName("Death")
 
 
 func _on_Next_button_up():
-	get_node("../../").LoadLevelNo(3)
+	get_node("../../").LoadLevelName("Ground-L1")

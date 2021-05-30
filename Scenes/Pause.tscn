@@ -1,0 +1,361 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Other Resources/karma future.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/Pause.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.172549, 0.117647, 0.192157, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+width = 1
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0 )
+colors = PoolColorArray( 0.243137, 0.231373, 0.396078, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+width = 1
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0.695652 )
+colors = PoolColorArray( 0.0627451, 0.0705882, 0.109804, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+width = 1
+
+[node name="Pause" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="Menu" type="Node2D" parent="."]
+visible = false
+
+[node name="Background" type="ColorRect" parent="Menu"]
+margin_left = 170.0
+margin_top = 10.0
+margin_right = 470.0
+margin_bottom = 340.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Menu/Background"]
+margin_left = 81.0
+margin_top = 4.495
+margin_right = 219.0
+margin_bottom = 53.495
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.952941, 0.717647, 1 )
+text = "Paused"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top" type="ColorRect" parent="Menu/Background"]
+anchor_right = 1.0
+margin_bottom = 3.0
+color = Color( 0.968627, 0.952941, 0.717647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom" type="ColorRect" parent="Menu/Background"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 3.0
+color = Color( 0.968627, 0.952941, 0.717647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="ColorRect" parent="Menu/Background"]
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.8147e-06
+color = Color( 0.968627, 0.952941, 0.717647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="ColorRect" parent="Menu/Background"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.0
+color = Color( 0.968627, 0.952941, 0.717647, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="TextureButton" parent="Menu"]
+margin_left = 245.0
+margin_top = 90.0
+margin_right = 394.0
+margin_bottom = 143.0
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 5 )
+texture_hover = SubResource( 7 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Menu/Resume"]
+margin_left = 4.94974
+margin_top = -3.53554
+margin_right = 129.95
+margin_bottom = 45.4645
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.952941, 0.717647, 1 )
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top" type="ColorRect" parent="Menu/Resume"]
+anchor_right = 1.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom" type="ColorRect" parent="Menu/Resume"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="ColorRect" parent="Menu/Resume"]
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.8147e-06
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="ColorRect" parent="Menu/Resume"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="TextureButton" parent="Menu"]
+margin_left = 243.0
+margin_top = 150.0
+margin_right = 397.0
+margin_bottom = 203.0
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 5 )
+texture_hover = SubResource( 7 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Menu/Options"]
+margin_left = 4.94974
+margin_top = -3.53554
+margin_right = 129.95
+margin_bottom = 45.4645
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.952941, 0.717647, 1 )
+text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top" type="ColorRect" parent="Menu/Options"]
+anchor_right = 1.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom" type="ColorRect" parent="Menu/Options"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="ColorRect" parent="Menu/Options"]
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.8147e-06
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="ColorRect" parent="Menu/Options"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Help" type="TextureButton" parent="Menu"]
+margin_left = 271.0
+margin_top = 210.0
+margin_right = 369.0
+margin_bottom = 263.0
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 5 )
+texture_hover = SubResource( 7 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Menu/Help"]
+margin_left = 4.94974
+margin_top = -3.53554
+margin_right = 129.95
+margin_bottom = 45.4645
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.952941, 0.717647, 1 )
+text = "Help"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top" type="ColorRect" parent="Menu/Help"]
+anchor_right = 1.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom" type="ColorRect" parent="Menu/Help"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="ColorRect" parent="Menu/Help"]
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.8147e-06
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="ColorRect" parent="Menu/Help"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="TextureButton" parent="Menu"]
+margin_left = 223.0
+margin_top = 270.0
+margin_right = 418.0
+margin_bottom = 323.0
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 5 )
+texture_hover = SubResource( 7 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Menu/Main"]
+margin_left = 4.94974
+margin_top = -3.53554
+margin_right = 129.95
+margin_bottom = 45.4645
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.952941, 0.717647, 1 )
+text = "Main Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top" type="ColorRect" parent="Menu/Main"]
+anchor_right = 1.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom" type="ColorRect" parent="Menu/Main"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="ColorRect" parent="Menu/Main"]
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.8147e-06
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="ColorRect" parent="Menu/Main"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="Menu/Resume" to="." method="_on_Resume_button_up"]
+[connection signal="button_up" from="Menu/Options" to="." method="_on_Options_button_up"]
+[connection signal="button_up" from="Menu/Help" to="." method="_on_Help_button_up"]
+[connection signal="button_up" from="Menu/Main" to="." method="_on_Main_button_up"]

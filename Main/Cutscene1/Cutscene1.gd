@@ -4,6 +4,8 @@
 
 extends Node2D
 
+
+onready var skip = $Skip
 onready var animationPlayer = $AnimationPlayer
 
 func _ready():
@@ -14,6 +16,15 @@ func _input(event):
 		if(animationPlayer.is_playing() == false):
 			# Resume
 			animationPlayer.play()
+	# Skipping
+	if(event.is_action_pressed("esc")):
+			skip.show()
+			get_tree().paused = true
+
+# Used by skip menu
+func ResumeScene():
+	skip.hide()
+	get_tree().paused = false
 
 func Pause_Main_Animation():
 	animationPlayer.stop(false)
@@ -21,4 +32,4 @@ func Pause_Main_Animation():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	match(anim_name):
 		"main":
-			get_node("../../").LoadLevelNo(2)
+			get_node("../../").LoadLevelName("Space-L1")

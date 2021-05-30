@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Weapons/Pistol/Sprites/pistol.png" type="Texture" id=1]
-[ext_resource path="res://Main/Cutscene1.gd" type="Script" id=2]
+[ext_resource path="res://Main/Cutscene1/Cutscene1.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Skip.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "main"
@@ -72,7 +73,6 @@ everything is controlled by animation player node, when the final animation is f
 calls the function in Root to go to next scene"
 
 [node name="Panel2" type="Panel" parent="Objects"]
-visible = false
 margin_left = 328.0
 margin_top = 105.0
 margin_right = 483.0
@@ -91,4 +91,6 @@ Space
 E
 Enter
 Left click"
+
+[node name="Skip" parent="." instance=ExtResource( 3 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

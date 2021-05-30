@@ -3,15 +3,15 @@
 
 extends Node2D
 
-var scenes = [
-	preload("res://Main/Main.tscn"),
-	preload("res://Main/Cutscene1.tscn"),
-	preload("res://Main/Space-L1.tscn"),
-	preload("res://Main/Ground-L1.tscn"),
-	preload("res://Main/Win.tscn"),
-	preload("res://Main/Death.tscn"),
-	]
-var currentScene = 0
+var scenes = {
+	"Main":preload("res://Main/Main Menu/Main.tscn"),
+	"Cutscene1":preload("res://Main/Cutscene1/Cutscene1.tscn"),
+	"Space-L1":preload("res://Main/Space1/Space-L1.tscn"),
+	"Ground-L1":preload("res://Main/Ground1/Ground-L1.tscn"),
+	"Win":preload("res://Main/Win/Win.tscn"),
+	"Death":preload("res://Main/Death/Death.tscn"),
+	}
+var currentScene = "Main"
 
 onready var screen = $Screen
 onready var sceneTransition = $Transition/AnimationPlayer
@@ -58,6 +58,6 @@ func LoadLevel():
 	yield(sceneTransition, "animation_finished")
 
 # Sets the current scene, clears the screen and loads the current scene
-func LoadLevelNo(sceneNo : int):
-	currentScene = sceneNo
+func LoadLevelName(sceneName):
+	currentScene = sceneName
 	LoadLevel()
