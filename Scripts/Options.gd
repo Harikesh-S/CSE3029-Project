@@ -8,6 +8,8 @@ func Update():
 	
 	if(get_viewport().size==Vector2(1280,720)):
 		$Menu/Resolution.pressed = true
+	else:
+		$Menu/Resolution.pressed = false
 		
 	$Menu/Tutorials.pressed = root.tutorials
 	$Menu/Audio.pressed = root.audio
@@ -15,8 +17,11 @@ func Update():
 
 func _on_Resolution_button_up():
 	$Select.play()
+	if(get_viewport().size!=Vector2(1280,720)):
+		$Menu/Resolution.pressed = true
+	else:
+		$Menu/Resolution.pressed = false
 	root.Resolution()
-	$Menu/Resolution.pressed = !$Menu/Resolution.pressed
 
 
 func _on_Audio_button_up():
