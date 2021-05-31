@@ -32,4 +32,5 @@ func Pause_Main_Animation():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	match(anim_name):
 		"main":
+			$AnimationPlayer.stop()
 			get_node("../../").LoadLevelName("Space-L1")

@@ -14,8 +14,6 @@
 [ext_resource path="res://Player/Weapons/Pistol/Sprites/bullet_explosion0005.png" type="Texture" id=13]
 [ext_resource path="res://Player/Weapons/Pistol/Sprites/bullet_explosion0004.png" type="Texture" id=14]
 
-
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 1 ), ExtResource( 7 ), ExtResource( 6 ) ],
@@ -102,7 +100,7 @@ script = ExtResource( 3 )
 light_mask = 2
 z_index = 1
 frames = SubResource( 1 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

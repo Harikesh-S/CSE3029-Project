@@ -30,6 +30,5 @@ func _on_Area2D_area_entered(area):
 		area.get_parent().OnHit([damage,DAMAGE_TYPE,1,false])
 	else:
 		area.get_parent().OnHit([damage,DAMAGE_TYPE,0,false])
-	emit_signal("hit_enemy",DASH_RECHARGE)
-	
+	emit_signal("hit_enemy",DASH_RECHARGE)	
 	Hit()

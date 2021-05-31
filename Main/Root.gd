@@ -13,6 +13,8 @@ var scenes = {
 	}
 var currentScene = "Main"
 
+var score = 0
+
 onready var screen = $Screen
 onready var sceneTransition = $Transition/AnimationPlayer
 

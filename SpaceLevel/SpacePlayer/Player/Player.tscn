@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://SpaceLevel/SpacePlayer/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://SpaceLevel/SpacePlayer/Player/ship_down.png" type="Texture" id=3]
+[ext_resource path="res://SpaceLevel/SpacePlayer/Player/ship_up.png" type="Texture" id=4]
+[ext_resource path="res://SpaceLevel/Shoot/flash.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "down",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), null ],
+"loop": false,
+"name": "default",
+"speed": 20.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "none",
+"speed": 5.0
+} ]
+
+[node name="Player" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -11.6392, 0 )
+scale = Vector2( 0.702982, 0.513267 )
+frames = SubResource( 1 )
+
+[node name="Flash" type="AnimatedSprite" parent="."]
+position = Vector2( 18, 1 )
+frames = SubResource( 2 )
+animation = "none"
+
+[node name="ShotPosition" type="Position2D" parent="."]
+position = Vector2( 25, 1 )
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0.309359, 0.795494 )
+polygon = PoolVector2Array( 13.7185, 0.40453, 9.54713, 4.5759, -8.80692, 5.07647, -19.1519, 9.4147, -25.8261, 17.9243, -30.8318, 18.258, -30.8318, -20.1186, -25.6593, -20.1186, -19.6525, -11.4422, -9.64119, -6.93709, 9.38028, -6.93709, 13.6897, -3.10441 )
+
+[node name="Invincibility" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+[connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
+[connection signal="timeout" from="Invincibility" to="." method="_on_Invincibility_timeout"]

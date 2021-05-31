@@ -8,6 +8,7 @@ var health : float
 var maxHealth : float
 var def : Array
 var alive : bool = true
+var SCORE = 10
 
 onready var animationPlayer = $AnimationPlayer
 onready var area2D = $Area2D
@@ -55,6 +56,8 @@ func OnHit(damage) -> void:
 		Die()
 		if damage[3] == true: # Was killed by a melee attack, send signal
 			get_parent().DashKill()
+		# Inform enemy controller with score
+		get_parent().Kill(SCORE)
 
 # Virtual function. Corresponds to the `_physics_process()` callback.
 func physics_update(_delta: float) -> void:

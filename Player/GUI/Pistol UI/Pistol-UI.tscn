@@ -539,7 +539,7 @@ process_material = SubResource( 9 )
 texture = ExtResource( 20 )
 
 [node name="Ammo2" type="AnimatedSprite" parent="Ammo"]
-position = Vector2( 95, 20 )
+position = Vector2( 95, 19.7898 )
 frames = SubResource( 1 )
 animation = "use"
 frame = 4

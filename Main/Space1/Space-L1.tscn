@@ -1,51 +1,78 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Main/Space1/Space-L1.gd" type="Script" id=1]
+[ext_resource path="res://SpaceLevel/SpacePlayer/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SpaceLevel/EnemySpawner/EnemySpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SpaceLevel/Background/bg-stars.png" type="Texture" id=3]
+[ext_resource path="res://SpaceLevel/Background/bg-back.png" type="Texture" id=4]
+[ext_resource path="res://Main/Space1/Space-L1.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/ScoreCounter.tscn" type="PackedScene" id=7]
 
-[node name="Return-to-earth" type="Node2D"]
-script = ExtResource( 1 )
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
 
-[node name="Panel" type="Panel" parent="."]
-margin_left = 21.9204
-margin_top = 47.3763
-margin_right = 627.92
-margin_bottom = 129.376
+uniform vec2 direction = vec2(1.0, 0.0);
+uniform float speed_scale = 0.01;
+
+void fragment(){
+	vec2 move = direction * TIME * speed_scale;
+	COLOR = texture(TEXTURE, UV + move);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/direction = Vector2( 1, 0 )
+shader_param/speed_scale = 0.01
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform vec2 direction = vec2(1.0, 0.0);
+uniform float speed_scale = 0.02;
+
+void fragment(){
+	vec2 move = direction * TIME * speed_scale;
+	COLOR = texture(TEXTURE, UV + move);
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/direction = Vector2( 1, 0 )
+shader_param/speed_scale = 0.02
+
+[node name="World" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="ScoreTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Background" type="Node" parent="."]
+
+[node name="Nebula" type="Sprite" parent="Background"]
+material = SubResource( 2 )
+position = Vector2( -0.208, 0 )
+scale = Vector2( 2.35244, 2.24711 )
+z_index = -1
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Stars" type="Sprite" parent="Background"]
+material = SubResource( 4 )
+scale = Vector2( 2.35202, 2.2389 )
+z_index = -1
+texture = ExtResource( 3 )
+centered = false
 __meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
+"_editor_description_": ""
 }
 
-[node name="Label" type="Label" parent="Panel"]
-margin_left = 4.94975
-margin_top = 5.65686
-margin_right = 599.95
-margin_bottom = 70.6569
-text = "This will be the main scene for the space level, 
-probably have some way to pause but im gonna make that next (common for both space and 
-ground)
-The buttons just call functions to root check code"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="EnemySpawner" parent="." instance=ExtResource( 2 )]
+position = Vector2( 639.397, 0.598373 )
 
-[node name="Death" type="Button" parent="."]
-margin_left = 96.8739
-margin_top = 183.141
-margin_right = 146.874
-margin_bottom = 203.141
-text = "Death"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 38.5, 83.75 )
 
-[node name="Next" type="Button" parent="."]
-margin_left = 480.127
-margin_top = 174.656
-margin_right = 557.127
-margin_bottom = 194.656
-text = "Next level"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="button_up" from="Death" to="." method="_on_Death_button_up"]
-[connection signal="button_up" from="Next" to="." method="_on_Next_button_up"]
+[node name="Pause" parent="." instance=ExtResource( 6 )]
+
+[node name="Score" parent="." instance=ExtResource( 7 )]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]

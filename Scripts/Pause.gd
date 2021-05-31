@@ -23,4 +23,5 @@ func _on_Help_button_up():
 
 # Quit
 func _on_Main_button_up():
+	get_parent().ResumeGame()
 	get_node("../../../").LoadLevelName("Main")

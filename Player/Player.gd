@@ -138,7 +138,13 @@ func IncrementDash(amount):
 		if(dashCount>=maxDash):
 			currentMeleeWeapon.DashReadyEffect(true)
 
+
+onready var hitAnimationPlayer = $HitAnimationPlayer
 func OnHit(damage):
+	# Do not take damage if the player got hit recently
+	if(hitAnimationPlayer.is_playing()):
+		return
+	hitAnimationPlayer.play("Hit")
 	# Damage calculation 
 	var amount = int(damage[0]*(1-def[damage[1]]))
 	
@@ -151,6 +157,8 @@ func OnHit(damage):
 	health -= amount
 	if(health<0):
 		health = 0
+	if(health ==0):
+		get_node("../../../../").LoadLevelName("Death")
 	emit_signal("health_updated",(health/maxHealth))
 	
 func OnHeal(amount):

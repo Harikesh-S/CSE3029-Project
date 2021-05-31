@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ammoIdle0001.png-da434c7e628540ff946edc29f6bc3ec5.stex"
+path="res://.import/blob.png-6def86323970053b1988a9f23385b817.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/GUI/WaveGun UI/Sprites/ammoIdle0001.png"
-dest_files=[ "res://.import/ammoIdle0001.png-da434c7e628540ff946edc29f6bc3ec5.stex" ]
+source_file="res://Enemies/Blob-Resist/blob.png"
+dest_files=[ "res://.import/blob.png-6def86323970053b1988a9f23385b817.stex" ]
 
 [params]
 
