@@ -26,19 +26,19 @@ glow_intensity = 1.0
 glow_bloom = 1.0
 glow_hdr_threshold = 0.1
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 80.8602, 6.15569 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 14.4584, 21.25 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 9.4903, 22.1478 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 79.6876, 5.27223 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 12.9414, 21.25 )
 
 [node name="Earth-Level" type="Node2D"]
@@ -151,7 +151,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Tutorial 2"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Tutorial 3" type="Area2D" parent="Triggers"]
 position = Vector2( 290.948, 335.109 )
@@ -160,7 +160,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Tutorial 3"]
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="Tutorial 4" type="Area2D" parent="Triggers"]
 position = Vector2( 736.15, 392.56 )
@@ -169,7 +169,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Tutorial 4"]
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Tutorial 5" type="Area2D" parent="Triggers"]
 position = Vector2( 790.211, 482.661 )
@@ -178,7 +178,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Tutorial 5"]
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Activate 1" type="Area2D" parent="Triggers"]
 position = Vector2( 165.685, 150.572 )
@@ -187,7 +187,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Activate 1"]
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="Activate 2" type="Area2D" parent="Triggers"]
 position = Vector2( 342.085, 335.978 )
@@ -196,7 +196,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Activate 2"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Activate 3" type="Area2D" parent="Triggers"]
 position = Vector2( 856.173, 390.979 )
@@ -205,7 +205,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Activate 3"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Activate 4" type="Area2D" parent="Triggers"]
 position = Vector2( 636.171, 484.143 )
@@ -214,7 +214,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Activate 4"]
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Doors" type="Node2D" parent="."]
 
