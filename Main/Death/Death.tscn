@@ -1,8 +1,9 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Main/Death/Death.gd" type="Script" id=1]
 [ext_resource path="res://Other Resources/bad_earth.png" type="Texture" id=2]
 [ext_resource path="res://Other Resources/karma future.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/Audio/Select.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -309,7 +310,7 @@ __meta__ = {
 position = Vector2( 453.997, 169.058 )
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 51 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="Menu" type="TextureButton" parent="."]
@@ -451,5 +452,7 @@ text = "You Died!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Select" parent="." instance=ExtResource( 4 )]
 [connection signal="button_up" from="Menu" to="." method="_on_Menu_button_up"]
 [connection signal="button_up" from="Retry" to="." method="_on_Retry_button_up"]

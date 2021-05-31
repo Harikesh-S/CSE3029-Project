@@ -106,7 +106,7 @@ light_mask = 2
 texture = ExtResource( 2 )
 vframes = 3
 hframes = 4
-frame = 3
+frame = 2
 
 [node name="HealthBar" parent="." instance=ExtResource( 3 )]
 anchor_left = 0.5

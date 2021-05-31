@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://SpaceLevel/SpacePlayer/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://SpaceLevel/SpacePlayer/Player/ship_down.png" type="Texture" id=3]
 [ext_resource path="res://SpaceLevel/SpacePlayer/Player/ship_up.png" type="Texture" id=4]
 [ext_resource path="res://SpaceLevel/Shoot/flash.png" type="Texture" id=5]
+[ext_resource path="res://Other Resources/Audio/laserSmall_001.ogg" type="AudioStream" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -61,6 +62,9 @@ polygon = PoolVector2Array( 13.7185, 0.40453, 9.54713, 4.5759, -8.80692, 5.07647
 [node name="Invincibility" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
 [connection signal="area_entered" from="." to="." method="_on_Player_area_entered"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="Invincibility" to="." method="_on_Invincibility_timeout"]

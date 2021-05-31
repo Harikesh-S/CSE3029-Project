@@ -15,6 +15,9 @@ var currentScene = "Main"
 
 var score = 0
 
+var audio = true
+var tutorials = true
+
 onready var screen = $Screen
 onready var sceneTransition = $Transition/AnimationPlayer
 

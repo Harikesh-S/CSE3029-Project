@@ -1,5 +1,7 @@
 extends Area2D
 
+#Texture Progress
+
 const SHOOT: PackedScene = preload("res://SpaceLevel/Shoot/Shoot.tscn")
 const EXPLOSION_FX: PackedScene = preload("res://SpaceLevel/Explosion/Explosion.tscn")
 var floatingTextRes = preload("res://Scenes/FloatingText.tscn")
@@ -13,7 +15,7 @@ onready var FLASH: AnimatedSprite = $Flash
 onready var SHOT_POSITION: Position2D = $ShotPosition
 
 var player_ready:= false
-var lives = 3
+var lives = 4
 
 func _ready() -> void:
 	OS.set_window_size(Vector2(1280,720))
@@ -39,7 +41,6 @@ func _process(_delta: float) -> void:
 	
 	
 func animation_manager(dir: Vector2):
-
 	if dir.y == 1:
 		SPRITE.play("down")
 	elif dir.y == -1:
@@ -71,6 +72,8 @@ func get_move_direction()-> Vector2:
 	)
 	
 func shoot()->void:
+	if(get_node("../../../").audio):
+		$Shoot.play()
 	var shoot = SHOOT.instance()
 #	var main = get_tree().current_scene
 	get_parent().add_child(shoot)
@@ -79,10 +82,13 @@ func shoot()->void:
 
 func _on_Player_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemies"):
+		if(get_node("../../../").audio):
+			get_node("../Hit").global_position = self.global_position
+			get_node("../Hit").play()
 		area.Die()
 		kill()
 
-func OnHit(_damage) -> void:
+func OnHit(damage) -> void:
 	kill()
 	
 
@@ -101,14 +107,19 @@ func kill()->void:
 	player_ready = false
 	$CollisionShape2D.set_deferred("disabled",true)
 	lives -= 1
-	if(lives > 0):
+	
+	if(lives == 3):
+		get_node("../Lives/H1").play("default")
 		respawn()
-	else:
+		
+	elif(lives == 2):
+		get_node("../Lives/H2").play("default")
+		respawn()
+		
+	elif(lives == 1):
+		get_node("../Lives/H3").play("default")
 		get_node("../../../").LoadLevelName("Death")
 
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	player_ready = true
-
-
-func _on_Invincibility_timeout():
 	$CollisionShape2D.set_deferred("disabled",false)

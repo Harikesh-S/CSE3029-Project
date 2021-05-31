@@ -4,16 +4,18 @@
 extends Node2D
 
 func _ready():
-	pass
+	$CanvasLayer/Options.root = get_node("../../")
+	$CanvasLayer/Options.Update()
 
 func _on_New_Game_button_up():
+	$Select.play()
 	get_node("../../").LoadLevelName("Cutscene1")
 
 func _on_Exit_button_up():
+	$Select.play()
 	get_node("../../").Exit()
 
 func _on_Options_button_up():
-	pass # Replace with function body.
-
-func _on_Help_button_up():
-	pass # Replace with function body.
+	$Select.play()
+	$CanvasLayer/Options.Update()
+	$CanvasLayer/Options.show()

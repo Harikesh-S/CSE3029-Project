@@ -14,9 +14,9 @@ onready var player = get_node("../../Player")
 onready var nav = get_node("../../../Nav")
 
 func _ready():
-	SCORE = 50
-	maxHealth = 100.0
-	def = [0.1,0.1,0.1,0.1]
+	SCORE = 100
+	maxHealth = 200.0
+	def = [0.9,0.1,0.1,0.9]
 	Start()
 
 func _process(_delta):

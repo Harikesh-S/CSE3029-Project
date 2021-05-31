@@ -103,6 +103,8 @@ func ChangeRangedWeapon():
 
 func InstantReload():
 	currentRangedWeapon.InstantReload()
+	if(get_tree().current_scene.audio):
+		$Reload.play()
 	emit_signal("weapon_updated")
 	emit_signal("weapon_instant_reload")
 
@@ -112,6 +114,8 @@ func ReloadWeapon():
 
 func ShootWeapon():
 	if(currentRangedWeapon.ReadyToShoot()):
+		if(get_tree().current_scene.audio):
+			$Shoot.play()
 		currentRangedWeapon.CancelReload()
 		var bullet = currentRangedWeapon.Shoot(get_global_mouse_position())
 		get_parent().add_child(bullet)
@@ -145,6 +149,8 @@ func OnHit(damage):
 	if(hitAnimationPlayer.is_playing()):
 		return
 	hitAnimationPlayer.play("Hit")
+	if(get_tree().current_scene.audio):
+		$Hit.play()
 	# Damage calculation 
 	var amount = int(damage[0]*(1-def[damage[1]]))
 	

@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Other Resources/karma future.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scripts/Pause.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Options.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Audio/Select.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Options.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Audio/Select.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -35,19 +34,18 @@ colors = PoolColorArray( 0.0627451, 0.0705882, 0.109804, 1 )
 gradient = SubResource( 6 )
 width = 1
 
-[node name="Pause" type="CanvasLayer"]
+[node name="Options" type="Node2D"]
 pause_mode = 2
-layer = 2
+visible = false
 script = ExtResource( 2 )
 
 [node name="Menu" type="Node2D" parent="."]
-visible = false
 
 [node name="Background" type="ColorRect" parent="Menu"]
-margin_left = 170.0
-margin_top = 48.956
-margin_right = 470.0
-margin_bottom = 315.956
+margin_left = 102.0
+margin_top = 58.0
+margin_right = 537.0
+margin_bottom = 302.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -60,7 +58,7 @@ margin_right = 219.0
 margin_bottom = 53.495
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.968627, 0.952941, 0.717647, 1 )
-text = "Paused"
+text = "Options"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -103,11 +101,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Resume" type="TextureButton" parent="Menu"]
-margin_left = 245.0
-margin_top = 128.956
-margin_right = 394.0
-margin_bottom = 181.956
+[node name="Resolution" type="TextureButton" parent="Menu"]
+margin_left = 130.0
+margin_top = 135.0
+margin_right = 349.0
+margin_bottom = 188.0
+toggle_mode = true
 texture_normal = SubResource( 3 )
 texture_pressed = SubResource( 5 )
 texture_hover = SubResource( 7 )
@@ -117,19 +116,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Menu/Resume"]
+[node name="Label" type="Label" parent="Menu/Resolution"]
 margin_left = 4.94974
 margin_top = -3.53554
 margin_right = 129.95
 margin_bottom = 45.4645
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.968627, 0.952941, 0.717647, 1 )
-text = "Resume"
+text = "Resolution"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Top" type="ColorRect" parent="Menu/Resume"]
+[node name="Top" type="ColorRect" parent="Menu/Resolution"]
 anchor_right = 1.0
 margin_bottom = 3.0
 color = Color( 0.368627, 0.356863, 0.54902, 1 )
@@ -137,7 +136,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bottom" type="ColorRect" parent="Menu/Resume"]
+[node name="Bottom" type="ColorRect" parent="Menu/Resolution"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -147,7 +146,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Left" type="ColorRect" parent="Menu/Resume"]
+[node name="Left" type="ColorRect" parent="Menu/Resolution"]
 anchor_bottom = 1.0
 margin_right = 3.0
 margin_bottom = 3.8147e-06
@@ -156,7 +155,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Right" type="ColorRect" parent="Menu/Resume"]
+[node name="Right" type="ColorRect" parent="Menu/Resolution"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -167,11 +166,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="TextureButton" parent="Menu"]
-margin_left = 243.0
-margin_top = 188.956
-margin_right = 397.0
-margin_bottom = 241.956
+[node name="Audio" type="TextureButton" parent="Menu"]
+margin_left = 390.0
+margin_top = 135.0
+margin_right = 507.0
+margin_bottom = 188.0
+toggle_mode = true
 texture_normal = SubResource( 3 )
 texture_pressed = SubResource( 5 )
 texture_hover = SubResource( 7 )
@@ -181,19 +181,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Menu/Options"]
+[node name="Label" type="Label" parent="Menu/Audio"]
 margin_left = 4.94974
 margin_top = -3.53554
 margin_right = 129.95
 margin_bottom = 45.4645
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.968627, 0.952941, 0.717647, 1 )
-text = "Options"
+text = "Audio"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Top" type="ColorRect" parent="Menu/Options"]
+[node name="Top" type="ColorRect" parent="Menu/Audio"]
 anchor_right = 1.0
 margin_bottom = 3.0
 color = Color( 0.368627, 0.356863, 0.54902, 1 )
@@ -201,7 +201,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bottom" type="ColorRect" parent="Menu/Options"]
+[node name="Bottom" type="ColorRect" parent="Menu/Audio"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -211,7 +211,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Left" type="ColorRect" parent="Menu/Options"]
+[node name="Left" type="ColorRect" parent="Menu/Audio"]
 anchor_bottom = 1.0
 margin_right = 3.0
 margin_bottom = 3.8147e-06
@@ -220,7 +220,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Right" type="ColorRect" parent="Menu/Options"]
+[node name="Right" type="ColorRect" parent="Menu/Audio"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -231,11 +231,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Main" type="TextureButton" parent="Menu"]
-margin_left = 223.0
-margin_top = 248.956
-margin_right = 418.0
-margin_bottom = 301.956
+[node name="Tutorials" type="TextureButton" parent="Menu"]
+margin_left = 130.0
+margin_top = 210.0
+margin_right = 319.0
+margin_bottom = 263.0
+toggle_mode = true
 texture_normal = SubResource( 3 )
 texture_pressed = SubResource( 5 )
 texture_hover = SubResource( 7 )
@@ -245,19 +246,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Menu/Main"]
+[node name="Label" type="Label" parent="Menu/Tutorials"]
 margin_left = 4.94974
 margin_top = -3.53554
 margin_right = 129.95
 margin_bottom = 45.4645
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.968627, 0.952941, 0.717647, 1 )
-text = "Main Menu"
+text = "Tutorials"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Top" type="ColorRect" parent="Menu/Main"]
+[node name="Top" type="ColorRect" parent="Menu/Tutorials"]
 anchor_right = 1.0
 margin_bottom = 3.0
 color = Color( 0.368627, 0.356863, 0.54902, 1 )
@@ -265,7 +266,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bottom" type="ColorRect" parent="Menu/Main"]
+[node name="Bottom" type="ColorRect" parent="Menu/Tutorials"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -275,7 +276,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Left" type="ColorRect" parent="Menu/Main"]
+[node name="Left" type="ColorRect" parent="Menu/Tutorials"]
 anchor_bottom = 1.0
 margin_right = 3.0
 margin_bottom = 3.8147e-06
@@ -284,7 +285,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Right" type="ColorRect" parent="Menu/Main"]
+[node name="Right" type="ColorRect" parent="Menu/Tutorials"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -295,9 +296,72 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" parent="." instance=ExtResource( 3 )]
+[node name="Close" type="TextureButton" parent="Menu"]
+margin_left = 385.0
+margin_top = 210.0
+margin_right = 509.0
+margin_bottom = 263.0
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 5 )
+texture_hover = SubResource( 7 )
+expand = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
 
-[node name="Select" parent="." instance=ExtResource( 4 )]
-[connection signal="button_up" from="Menu/Resume" to="." method="_on_Resume_button_up"]
-[connection signal="button_up" from="Menu/Options" to="." method="_on_Options_button_up"]
-[connection signal="button_up" from="Menu/Main" to="." method="_on_Main_button_up"]
+[node name="Label" type="Label" parent="Menu/Close"]
+margin_left = 4.94974
+margin_top = -3.53554
+margin_right = 129.95
+margin_bottom = 45.4645
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.968627, 0.952941, 0.717647, 1 )
+text = "Close"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Top" type="ColorRect" parent="Menu/Close"]
+anchor_right = 1.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bottom" type="ColorRect" parent="Menu/Close"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="ColorRect" parent="Menu/Close"]
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.8147e-06
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="ColorRect" parent="Menu/Close"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 3.0
+margin_bottom = 3.0
+color = Color( 0.368627, 0.356863, 0.54902, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Select" parent="." instance=ExtResource( 3 )]
+[connection signal="button_up" from="Menu/Resolution" to="." method="_on_Resolution_button_up"]
+[connection signal="button_up" from="Menu/Audio" to="." method="_on_Audio_button_up"]
+[connection signal="button_up" from="Menu/Tutorials" to="." method="_on_Tutorials_button_up"]
+[connection signal="button_up" from="Menu/Close" to="." method="_on_Close_button_up"]

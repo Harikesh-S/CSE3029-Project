@@ -9,8 +9,10 @@ func hide():
 	menu.hide()
 
 func _on_No_button_up():
+	$Select.play()
 	get_parent().ResumeScene()
 
 func _on_Yes_button_up():
+	$Select.play()
 	get_parent().ResumeScene()
 	get_node("../../../").LoadLevelName("Space-L1")

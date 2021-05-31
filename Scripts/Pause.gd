@@ -9,19 +9,22 @@ func show():
 func hide():
 	menu.hide()
 
+func _ready():
+	$Options.root = get_node("../../../")
+
 # Unpause
 func _on_Resume_button_up():
+	$Select.play()
 	get_parent().ResumeGame()
 
 # Options
 func _on_Options_button_up():
-	pass # Replace with function body.
-
-# Help
-func _on_Help_button_up():
-	pass # Replace with function body.
+	$Select.play()
+	$Options.Update()
+	$Options.show()
 
 # Quit
 func _on_Main_button_up():
+	$Select.play()
 	get_parent().ResumeGame()
 	get_node("../../../").LoadLevelName("Main")

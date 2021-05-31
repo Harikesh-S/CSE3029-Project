@@ -1,10 +1,12 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Other Resources/karma future.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Main/Main Menu/Main.gd" type="Script" id=2]
 [ext_resource path="res://SpaceLevel/Background/bg-back.png" type="Texture" id=3]
 [ext_resource path="res://SpaceLevel/Background/bg-planet.png" type="Texture" id=4]
 [ext_resource path="res://SpaceLevel/Background/bg-stars.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Options.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Audio/Select.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0 )
@@ -66,9 +68,9 @@ texture = ExtResource( 4 )
 
 [node name="New Game" type="TextureButton" parent="Buttons"]
 margin_left = 20.0
-margin_top = 100.0
+margin_top = 160.0
 margin_right = 203.0
-margin_bottom = 153.0
+margin_bottom = 213.0
 texture_normal = SubResource( 2 )
 texture_pressed = SubResource( 4 )
 texture_hover = SubResource( 6 )
@@ -130,9 +132,9 @@ __meta__ = {
 
 [node name="Options" type="TextureButton" parent="Buttons"]
 margin_left = 20.0
-margin_top = 165.0
+margin_top = 225.0
 margin_right = 173.0
-margin_bottom = 218.0
+margin_bottom = 278.0
 texture_normal = SubResource( 2 )
 texture_pressed = SubResource( 4 )
 texture_hover = SubResource( 6 )
@@ -192,75 +194,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Help" type="TextureButton" parent="Buttons"]
-margin_left = 20.0
-margin_top = 230.0
-margin_right = 118.0
-margin_bottom = 283.0
-texture_normal = SubResource( 2 )
-texture_pressed = SubResource( 4 )
-texture_hover = SubResource( 6 )
-expand = true
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Buttons/Help"]
-margin_left = 4.94974
-margin_top = -3.53554
-margin_right = 129.95
-margin_bottom = 45.4645
-custom_fonts/font = SubResource( 7 )
-custom_colors/font_color = Color( 0.968627, 0.952941, 0.717647, 1 )
-text = "Help"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Top" type="ColorRect" parent="Buttons/Help"]
-anchor_right = 1.0
-margin_bottom = 3.0
-color = Color( 0.368627, 0.356863, 0.54902, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bottom" type="ColorRect" parent="Buttons/Help"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_bottom = 3.0
-color = Color( 0.368627, 0.356863, 0.54902, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Left" type="ColorRect" parent="Buttons/Help"]
-anchor_bottom = 1.0
-margin_right = 3.0
-margin_bottom = 3.8147e-06
-color = Color( 0.368627, 0.356863, 0.54902, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Right" type="ColorRect" parent="Buttons/Help"]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 3.0
-margin_bottom = 3.0
-color = Color( 0.368627, 0.356863, 0.54902, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Exit" type="TextureButton" parent="Buttons"]
 margin_left = 19.613
-margin_top = 295.0
+margin_top = 290.0
 margin_right = 109.613
-margin_bottom = 348.0
+margin_bottom = 343.0
 texture_normal = SubResource( 2 )
 texture_pressed = SubResource( 4 )
 texture_hover = SubResource( 6 )
@@ -344,7 +282,12 @@ text = "18BCE1069 Harikesh Subramanian
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Options" parent="CanvasLayer" instance=ExtResource( 6 )]
+
+[node name="Select" parent="." instance=ExtResource( 7 )]
 [connection signal="button_up" from="Buttons/New Game" to="." method="_on_New_Game_button_up"]
 [connection signal="button_up" from="Buttons/Options" to="." method="_on_Options_button_up"]
-[connection signal="button_up" from="Buttons/Help" to="." method="_on_Help_button_up"]
 [connection signal="button_up" from="Buttons/Exit" to="." method="_on_Exit_button_up"]

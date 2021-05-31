@@ -6,6 +6,7 @@ var time = 0
 onready var pause = $Pause
 func _input(event):
 	if(event.is_action_pressed("esc")):
+			$Select.play()
 			pause.show()
 			get_tree().paused = true
 func ResumeGame():
@@ -23,3 +24,4 @@ func Win():
 
 func _on_ScoreTimer_timeout():
 	time += 1
+
