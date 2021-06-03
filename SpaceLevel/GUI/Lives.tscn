@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://SpaceLevel/GUI/Sprite/Heart.png" type="Texture" id=1]
-[ext_resource path="res://spaceLevel/SpacePlayer/Player/ship.png" type="Texture" id=2]
+[ext_resource path="res://SpaceLevel/SpacePlayer/Player/ship.png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
